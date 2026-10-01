@@ -9,43 +9,52 @@
             font-family: 'Arial', sans-serif;
             background-color: #ffe6e6;
             text-align: center;
-            padding: 50px 20px;
+            padding: 30px 15px;
             color: #333;
         }
         .container {
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
             background: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        h1 { color: #ff1493; }
-        .buttons { margin-top: 30px; position: relative; height: 80px; }
+        h1 { color: #ff1493; font-size: 24px; }
+        h2 { font-size: 20px; }
+        .buttons { margin-top: 25px; }
         .btn {
-            padding: 15px 35px;
-            font-size: 18px;
+            padding: 12px 25px;
+            font-size: 16px;
             font-weight: bold;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            margin: 10px;
-            transition: all 0.3s ease;
+            margin: 8px;
+            display: inline-block;
         }
         #yesBtn { background-color: #28a745; color: white; }
         #noBtn { background-color: #dc3545; color: white; }
-        #secretContent { display: none; margin-top: 40px; animation: fadeIn 1.5s ease; }
+        #secretContent { display: none; margin-top: 30px; animation: fadeIn 1.2s ease; }
         .badge {
             background-color: #ff69b4;
             color: white;
-            padding: 5px 15px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
             display: inline-block;
-            margin: 5px;
+            margin: 4px;
+        }
+        .profile-img {
+            width: 85%;
+            max-width: 320px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border: 3px solid #ff69b4;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
@@ -75,6 +84,10 @@
     <!-- "HA" bosilganda ochiladigan qism -->
     <div id="secretContent">
         <hr style="border: 1px inset #fff; width: 50%; margin: 20px auto;">
+        
+        <!-- Rasm nomi katta harf bilan Photo.jpg qilib to'g'rilandi -->
+        <img src="Photo.jpg" class="profile-img" alt="Maftuna">
+
         <h1>🎉 SIZ "HA" DEDINGIZ! MAVJUDLIGINGIZ UCHUN RAHMAT, BAXTIM! 🎉</h1>
         <span class="badge" style="background-color: red;">Dunyodagi Eng Baxtli Inson ❤️</span>
         <span class="badge" style="background-color: orange;">Qalbim Quyoshi ☀️</span>
@@ -82,25 +95,23 @@
         <h2>💖 Dunyoni quvonchga to‘ldirganimsiz, Maftunam! 💖</h2>
         <p><i>Bu hayotda bergan eng go‘zal javobingiz uchun rahmat...</i></p>
 
-        <div style="background: #fff0f5; padding: 20px; border-radius: 15px; border-left: 5px solid #ff1493; text-align: left; font-style: italic; margin: 20px 0;">
+        <div style="background: #fff0f5; padding: 15px; border-radius: 15px; border-left: 5px solid #ff1493; text-align: left; font-style: italic; margin: 15px 0; font-size: 15px; line-height: 1.5;">
             "Meni suyukligim! Hamisha oila a'zolaringiz va mening baxtimga sog‘-salomat bo‘ling. Menga hali ko‘p keraksiz... Siz yo‘q bo‘lsangiz, men o‘zimni xotirjam his qilolmayman. Meni o‘zimga tashlab qo‘ymang, men faqat siz bilan yaxshiman. Bu yerda mening yuragim, aqlim va qalbim quyoshi — sizsiz! Sizni judayam yaxshi ko‘raman!" 🌹
         </div>
 
         <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRGA! 👩‍❤️‍👨</h3>
         <p>✨ ✨ ❤️ M A F T U N A & S I Z ❤️ ✨ ✨</p>
-        <p>🎈 🥂 💍 💖 💍 🥂 🎈</p>
+        <p>🎈 2026 💍 💖 💍 🥂 🎈</p>
     </div>
 </div>
 
 <script>
     function acceptProposal() {
-        // Musiqani chalish
         var audio = document.getElementById("bgMusic");
         audio.play().catch(function(error) {
-            console.log("Musiqa ijrosida xatolik: ", error);
+            console.log("Musiqa xatoligi: ", error);
         });
 
-        // Tugmalarni yashirish va maxfiy matnni ko'rsatish
         document.getElementById("btnContainer").style.display = "none";
         document.getElementById("secretContent").style.display = "block";
     }
