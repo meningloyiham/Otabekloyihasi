@@ -3,240 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohlaroyim uchun maxsus ❤️</title>
+    <title>Maftunaga Xat 💖</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffe6ea;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6;
             text-align: center;
+            padding: 50px 20px;
+            color: #333;
         }
-
         .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 25px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(255, 75, 110, 0.2);
-            z-index: 10;
-            max-width: 420px;
-            width: 85%;
-            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-
-        h1 {
-            color: #ff4b6e;
-            font-size: 22px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .main-p {
-            font-size: 16px;
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .question-p {
-            font-size: 18px;
-            font-weight: bold;
-            color: #ff4b6e;
-            margin: 20px 0;
-        }
-
-        /* Sariq ogohlantirish oynasi */
-        .yellow-box {
-            border: 2px dashed #ffb703;
-            background-color: rgba(255, 183, 3, 0.1);
-            border-radius: 12px;
-            padding: 15px;
-            color: #d48b00;
-            font-size: 15px;
-            line-height: 1.5;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-            min-height: 50px;
-            position: relative;
-        }
-
+        h1 { color: #ff1493; }
+        .buttons { margin-top: 30px; position: relative; height: 80px; }
         .btn {
-            color: white;
-            border: none;
-            padding: 12px 35px;
+            padding: 15px 35px;
             font-size: 18px;
-            border-radius: 25px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.2s, transform 0.1s;
-            z-index: 15;
+            margin: 10px;
+            transition: all 0.3s ease;
         }
-
-        #yesBtn {
-            background-color: #2ec4b6;
-            box-shadow: 0 5px 15px rgba(46, 196, 182, 0.3);
+        #yesBtn { background-color: #28a745; color: white; }
+        #noBtn { background-color: #dc3545; color: white; }
+        #secretContent { display: none; margin-top: 40px; animation: fadeIn 1.5s ease; }
+        .badge {
+            background-color: #ff69b4;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+            margin: 5px;
         }
-
-        #yesBtn:hover {
-            background-color: #21a195;
-            transform: scale(1.05);
-        }
-
-        #noBtn {
-            background-color: #e63946;
-            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
-            position: relative;
-        }
-
-        .content {
-            display: none;
-            font-size: 16px;
-            color: #333;
-            line-height: 1.6;
-            animation: fadeIn 1.5s ease-in-out forwards;
-        }
-
-        .media-element {
-            width: 100%;
-            max-width: 180px;
-            height: auto;
-            border-radius: 15px;
-            margin: 10px auto;
-            display: block;
-            box-shadow: 0 5px 15px rgba(255, 75, 110, 0.2);
-        }
-
-        .big-heading {
-            font-size: 24px;
-            color: #ff4b6e;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .signature {
-            font-weight: bold;
-            color: #ff4b6e;
-            font-size: 20px;
-            margin-top: 20px;
-            display: block;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .heart {
-            position: absolute;
-            color: #ff4b6e;
-            bottom: -20px;
-            animation: floatUp linear infinite;
-            opacity: 0.6;
-            z-index: 1;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-            100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
+<div class="container">
+    <h1>🌟 Maftuna go‘zalim meni 🌟</h1>
+    <span class="badge">Yuragimning Egasi ❤️</span>
+    <span class="badge">Faqat Sizni Sevaman 💖</span>
 
-    <div class="container">
-        <!-- 1-RASMDAGI TO'LIQ GAPLAR -->
-        <div id="startSection">
-            <h1>Assalomu alaykum va rahmatulloh</h1>
-            <p class="main-p">Mening quyoshim bugungi shukrona kuningiz muborak bo‘lsin! Alloh umringizni ziyoda, hayotingizni osuda, qalbingizni xotirjam qilsin, oila a'zolaringizni salomat qilsin. Bugun sizga sovg‘alar berolmasam-da, shu tilaklarimni noyabr oyigacha qabul qilib turgaysiz.</p>
-            
-            <p class="question-p">Menga turmushga chiqishga rozimisiz?</p>
-            
-            <div class="yellow-box">
-                Kibr qilmay "Ha"ni bosing chiroyligim 👈, yo‘q tugmasini bosa olmaysiz, chunki meni yaxshi ko‘rasiz!
-            </div>
+    <h2>💖 Chiroyligim, men sizni judayam yaxshi ko‘raman! 💖</h2>
+    <p><i>Hayotimning har bir kuni siz bilan go‘zal va mazmunli...</i></p>
 
-            <div class="btn-group">
-                <button class="btn" id="yesBtn" onclick="startSurprise()">Ha</button>
-                <button class="btn" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">Yo‘q</button>
-            </div>
-        </div>
+    <blockquote>
+        <h3>🌹 "Men bilan bir umr baxtli bo‘lishga, hayot yo‘limni yoritib turishga rozimisiz?" 🌹</h3>
+    </blockquote>
 
-        <!-- 2-RASMDAGI TO'LIQ GAPLAR (Yangi kichik rasm bilan) -->
-        <div id="secretContent" class="content">
-            <div class="big-heading">❤️ Rozi bo‘lishingizni bilardim! ❤️</div>
-            
-            <!-- Siz yuklagan rasm shu yerda chiqadi -->
-            <img src="photo.jpg" alt="Mohlaroyim" class="media-element">
+    <!-- Musiqa fayli -->
+    <audio id="bgMusic" src="music.mp3" preload="auto"></audio>
 
-            <p>Sizni dunyolarga alishmaydigan, umrning oxirigacha sevadigan insoningiz bor. Alloh ikki dunyoda bizni ayrmasin. Doimo duolar qiling, axir sizning duoingiz o‘tadi-ku.</p>
-            <p>O‘qishlaringizda yuksak ma'naviyat egasi bo‘ling, o‘zingiz xohlagandek yetuk shifokor bo‘lib yetishing. Germaniyaga borish nasib qilsin, eng zo‘r shifokor bo‘ling. Shuncha payt ko‘rishmadik, endi nasib qilsa ko‘risharmiz.</p>
-            
-            <p style="font-weight: bold; color: #ffb703; margin-top: 15px;">Noyabr oyida kutaman...</p>
-            
-            <span class="signature">❤️ Sizni, sizni yaxshi ko‘raman! ❤️</span>
-        </div>
+    <div class="buttons" id="btnContainer">
+        <button class="btn" id="yesBtn" onclick="acceptProposal()">❤️ HA, JONIM BILAN ROZIMAN!</button>
+        <button class="btn" id="noBtn" style="opacity: 0.6; cursor: not-allowed;">💔 Yo‘q...</button>
     </div>
 
-    <script>
-        setInterval(createHeart, 500);
+    <!-- "HA" bosilganda ochiladigan qism -->
+    <div id="secretContent">
+        <hr style="border: 1px inset #fff; width: 50%; margin: 20px auto;">
+        <h1>🎉 SIZ "HA" DEDINGIZ! MAVJUDLIGINGIZ UCHUN RAHMAT, BAXTIM! 🎉</h1>
+        <span class="badge" style="background-color: red;">Dunyodagi Eng Baxtli Inson ❤️</span>
+        <span class="badge" style="background-color: orange;">Qalbim Quyoshi ☀️</span>
 
-        function startSurprise() {
-            var music = document.getElementById("bgMusic");
-            music.play().catch(function(error) {
-                console.log("Musiqa cheklovi:", error);
-            });
+        <h2>💖 Dunyoni quvonchga to‘ldirganimsiz, Maftunam! 💖</h2>
+        <p><i>Bu hayotda bergan eng go‘zal javobingiz uchun rahmat...</i></p>
 
-            document.getElementById("startSection").style.display = "none";
-            document.getElementById("secretContent").style.display = "block";
-            setInterval(createHeart, 150);
-        }
+        <div style="background: #fff0f5; padding: 20px; border-radius: 15px; border-left: 5px solid #ff1493; text-align: left; font-style: italic; margin: 20px 0;">
+            "Meni suyukligim! Hamisha oila a'zolaringiz va mening baxtimga sog‘-salomat bo‘ling. Menga hali ko‘p keraksiz... Siz yo‘q bo‘lsangiz, men o‘zimni xotirjam his qilolmayman. Meni o‘zimga tashlab qo‘ymang, men faqat siz bilan yaxshiman. Bu yerda mening yuragim, aqlim va qalbim quyoshi — sizsiz! Sizni judayam yaxshi ko‘raman!" 🌹
+        </div>
 
-        function moveNoButton() {
-            const noBtn = document.getElementById('noBtn');
-            const container = document.querySelector('.container');
-            const containerRect = container.getBoundingClientRect();
-            const btnRect = noBtn.getBoundingClientRect();
+        <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRGA! 👩‍❤️‍👨</h3>
+        <p>✨ ✨ ❤️ M A F T U N A & S I Z ❤️ ✨ ✨</p>
+        <p>🎈 🥂 💍 💖 💍 🥂 🎈</p>
+    </div>
+</div>
 
-            noBtn.style.position = 'absolute';
+<script>
+    function acceptProposal() {
+        // Musiqani chalish
+        var audio = document.getElementById("bgMusic");
+        audio.play().catch(function(error) {
+            console.log("Musiqa ijrosida xatolik: ", error);
+        });
 
-            const maxX = containerRect.width - btnRect.width - 20;
-            const maxY = containerRect.height - btnRect.height - 20;
+        // Tugmalarni yashirish va maxfiy matnni ko'rsatish
+        document.getElementById("btnContainer").style.display = "none";
+        document.getElementById("secretContent").style.display = "block";
+    }
+</script>
 
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
-        }
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's'; 
-            heart.style.fontSize = Math.random() * 15 + 12 + 'px';
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 5000);
-        }
-    </script>
 </body>
 </html>
