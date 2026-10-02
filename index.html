@@ -7,29 +7,30 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffe6e6 0%, #ffb6c1 100%);
+            background: #ffe6e6 !important; /* Majburiy yorqin fon */
             text-align: center;
-            padding: 30px 15px;
-            color: #333;
+            padding: 20px 10px;
+            color: #333 !important;
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
+            margin: 0;
         }
         .container {
-            max-width: 500px;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
+            max-width: 450px;
+            margin: 20px auto;
+            background: #ffffff !important; /* Majburiy oq fon */
+            padding: 20px;
             border-radius: 25px;
             box-shadow: 0 15px 35px rgba(255, 20, 147, 0.2);
             position: relative;
             z-index: 10;
         }
-        h1 { color: #ff1493; font-size: 26px; }
-        h2 { font-size: 20px; }
-        .buttons { margin-top: 35px; }
+        h1 { color: #ff1493 !important; font-size: 24px; }
+        h2 { color: #cc1177 !important; font-size: 19px; }
+        .buttons { margin-top: 30px; }
         .btn {
-            padding: 15px 30px;
+            padding: 15px 25px;
             font-size: 16px;
             font-weight: bold;
             border: none;
@@ -52,48 +53,46 @@
             font-weight: bold;
         }
         .profile-img {
-            width: 90%;
+            width: 95%;
             max-width: 320px;
             border-radius: 20px;
-            margin: 20px 0;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 1), 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 4px solid #ffffff;
-            position: relative;
-            z-index: 5;
+            margin: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 5px solid #ff69b4;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        /* Yurakchalarni eng ustki qatlamga chiqarish va yorqin qilish */
         .heart-particle {
-            position: fixed; /* Butun ekran bo'ylab harakatlanishi uchun */
+            position: fixed;
             color: #ff1493;
-            font-size: 28px;
+            font-size: 30px;
             pointer-events: none;
-            z-index: 9999 !important; /* Rasm va oq blokning ustida ko'rinadi */
-            animation: flyUp 4s linear infinite;
-            /* To'q rangli rasmlar ustida ham porlab turishi uchun soya */
-            text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 20, 147, 0.8);
+            z-index: 9999 !important;
+            animation: flyUp 3.5s linear infinite;
+            text-shadow: 0 0 8px #fff, 0 0 15px #ff1493;
         }
         @keyframes flyUp {
             0% { transform: translateY(105vh) scale(0); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.6); opacity: 0; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
     </style>
 </head>
-<body>
+<body style="background: #ffe6e6 !important;">
 
 <!-- 1-SAHIFA: SAVOL -->
-<div class="container" id="questionPage">
+<div class="container" id="questionPage" style="background: #ffffff !important;">
     <h1>🌟 Maftuna go‘zalim meni 🌟</h1>
     <span class="badge">Yuragimning Egasi ❤️</span>
     <span class="badge">Faqat Sizni Sevaman 💖</span>
 
     <h2>💖 Chiroyligim, men sizni judayam yaxshi ko‘raman! 💖</h2>
-    <p><i>Hayotimning har bir kuni siz bilan go‘zal va mazmunli...</i></p>
+    <p style="color: #555;"><i>Hayotimning har bir kuni siz bilan go‘zal va mazmunli...</i></p>
 
-    <blockquote>
-        <h3>🌹 "Men bilan bir umr baxtli bo‘lishga, hayot yo‘limni yoritib turishga rozimisiz?" 🌹</h3>
+    <blockquote style="border-left: 4px solid #ff69b4; padding-left: 10px; margin: 15px 0;">
+        <h3 style="color: #333;">🌹 "Men bilan bir umr baxtli bo‘lishga, hayot yo‘limni yoritib turishga rozimisiz?" 🌹</h3>
     </blockquote>
 
     <div class="buttons">
@@ -103,7 +102,9 @@
 </div>
 
 <!-- 2-SAHIFA: BOSILGANDA ALOHIDA CHIQADIGAN QISM -->
-<div class="container" id="secretPage" style="display: none;">
+<div class="container" id="secretPage" style="display: none; background: #ffffff !important;">
+    
+    <!-- RASM ENG TEPAGA CHIQARILDI -->
     <img src="https://ibb.co" class="profile-img" alt="Maftuna">
 
     <h1>🎉 SIZ "HA" DEDINGIZ! MAVJUDLIGINGIZ UCHUN RAHMAT, BAXTIM! 🎉</h1>
@@ -111,15 +112,15 @@
     <span class="badge" style="background-color: orange;">Qalbim Quyoshi ☀️</span>
 
     <h2>💖 Dunyoni quvonchga to‘ldirganimsiz, Maftunam! 💖</h2>
-    <p><i>Bu hayotda bergan eng go‘zal javobingiz uchun rahmat...</i></p>
+    <p style="color: #555;"><i>Bu hayotda bergan eng go‘zal javobingiz uchun rahmat...</i></p>
 
-    <div style="background: #fff0f5; padding: 20px; border-radius: 15px; border-left: 6px solid #ff1493; text-align: left; font-style: italic; margin: 20px 0; font-size: 15px; line-height: 1.6;">
+    <div style="background: #fff0f5 !important; padding: 15px; border-radius: 15px; border-left: 6px solid #ff1493; text-align: left; font-style: italic; margin: 15px 0; font-size: 15px; line-height: 1.6; color: #333;">
         "Meni suyukligim! Hamisha oila a'zolaringiz va mening baxtimga sog‘-salomat bo‘ling. Menga hali ko‘p keraksiz... Siz yo‘q bo‘lsangiz, men o‘zimni xotirjam his qilolmayman. Meni o‘zimga tashlab qo‘ymang, men faqat siz bilan yaxshiman. Bu yerda mening yuragim, aqlim va qalbim quyoshi — sizsiz! Sizni judayam yaxshi ko‘raman!" 🌹
     </div>
 
     <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRGA! 👩‍❤️‍👨</h3>
-    <p style="font-size: 18px; font-weight: bold; color: #ff1493;">✨ ❤️ M A F T U N A & S I Z ❤️ ✨</p>
-    <p style="font-size: 22px;">🎈 2026 💍 💖 💍 🥂 🎈</p>
+    <p style="font-size: 18px; font-weight: bold; color: #ff1493; margin: 5px 0;">✨ ❤️ M A F T U N A & S I Z ❤️ ✨</p>
+    <p style="font-size: 20px; margin: 5px 0;">🎈 2026 💍 💖 💍 🥂 🎈</p>
 </div>
 
 <audio id="bgMusic" src="music.mp3" preload="auto" loop></audio>
@@ -131,22 +132,22 @@
         heart.classList.add("heart-particle");
         heart.innerText = heartText[Math.floor(Math.random() * heartText.length)];
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 2 + 2.5) + "s"; // Biroz tezroq uchadi
-        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        heart.style.animationDuration = (Math.random() * 1.5 + 2) + "s"; // Yurakchalar tezroq ko'rinishi uchun tezlik oshirildi
+        heart.style.fontSize = (Math.random() * 20 + 18) + "px";
         document.body.appendChild(heart);
         
-        setTimeout(() => { heart.remove(); }, 4000);
+        setTimeout(() => { heart.remove(); }, 3500);
     }
 
     function acceptProposal() {
         var audio = document.getElementById("bgMusic");
-        audio.play().catch(function(e) { console.log("Musiqa ijro etilmadi:", e); });
+        audio.play().catch(function(e) { console.log("Musiqa xatosi:", e); });
 
         document.getElementById("questionPage").style.display = "none";
         document.getElementById("secretPage").style.display = "block";
 
-        // Yurakchalarni tezroq va ko'proq chiqarish
-        setInterval(createHeart, 150);
+        // Yurakchalar tinimsiz va ko'p uchishi uchun vaqt qisqartirildi
+        setInterval(createHeart, 100);
     }
 </script>
 
