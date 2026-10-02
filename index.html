@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #ffe6e6;
+            background: linear-gradient(135deg, #ffe6e6 0%, #ffb6c1 100%);
             text-align: center;
             padding: 30px 15px;
             color: #333;
@@ -18,10 +18,10 @@
         .container {
             max-width: 500px;
             margin: 40px auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.2);
             position: relative;
             z-index: 10;
         }
@@ -54,25 +54,30 @@
         .profile-img {
             width: 90%;
             max-width: 320px;
-            border-radius: 15px;
+            border-radius: 20px;
             margin: 20px 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            border: 4px solid #ff69b4;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 1), 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 4px solid #ffffff;
+            position: relative;
+            z-index: 5;
         }
         
+        /* Yurakchalarni eng ustki qatlamga chiqarish va yorqin qilish */
         .heart-particle {
-            position: absolute;
+            position: fixed; /* Butun ekran bo'ylab harakatlanishi uchun */
             color: #ff1493;
-            font-size: 24px;
+            font-size: 28px;
             pointer-events: none;
-            z-index: 1;
+            z-index: 9999 !important; /* Rasm va oq blokning ustida ko'rinadi */
             animation: flyUp 4s linear infinite;
+            /* To'q rangli rasmlar ustida ham porlab turishi uchun soya */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 20, 147, 0.8);
         }
         @keyframes flyUp {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            0% { transform: translateY(105vh) scale(0); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+            100% { transform: translateY(-10vh) scale(1.6); opacity: 0; }
         }
     </style>
 </head>
@@ -99,7 +104,6 @@
 
 <!-- 2-SAHIFA: BOSILGANDA ALOHIDA CHIQADIGAN QISM -->
 <div class="container" id="secretPage" style="display: none;">
-    <!-- Siz yuborgan rasm havolasi shu yerga joylashtirildi -->
     <img src="https://ibb.co" class="profile-img" alt="Maftuna">
 
     <h1>🎉 SIZ "HA" DEDINGIZ! MAVJUDLIGINGIZ UCHUN RAHMAT, BAXTIM! 🎉</h1>
@@ -113,7 +117,7 @@
         "Meni suyukligim! Hamisha oila a'zolaringiz va mening baxtimga sog‘-salomat bo‘ling. Menga hali ko‘p keraksiz... Siz yo‘q bo‘lsangiz, men o‘zimni xotirjam his qilolmayman. Meni o‘zimga tashlab qo‘ymang, men faqat siz bilan yaxshiman. Bu yerda mening yuragim, aqlim va qalbim quyoshi — sizsiz! Sizni judayam yaxshi ko‘raman!" 🌹
     </div>
 
-    <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRA! 👩‍❤️‍👨</h3>
+    <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRGA! 👩‍❤️‍👨</h3>
     <p style="font-size: 18px; font-weight: bold; color: #ff1493;">✨ ❤️ M A F T U N A & S I Z ❤️ ✨</p>
     <p style="font-size: 22px;">🎈 2026 💍 💖 💍 🥂 🎈</p>
 </div>
@@ -127,8 +131,8 @@
         heart.classList.add("heart-particle");
         heart.innerText = heartText[Math.floor(Math.random() * heartText.length)];
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-        heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+        heart.style.animationDuration = (Math.random() * 2 + 2.5) + "s"; // Biroz tezroq uchadi
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
         document.body.appendChild(heart);
         
         setTimeout(() => { heart.remove(); }, 4000);
@@ -141,7 +145,8 @@
         document.getElementById("questionPage").style.display = "none";
         document.getElementById("secretPage").style.display = "block";
 
-        setInterval(createHeart, 250);
+        // Yurakchalarni tezroq va ko'proq chiqarish
+        setInterval(createHeart, 150);
     }
 </script>
 
