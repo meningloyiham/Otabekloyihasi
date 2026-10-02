@@ -11,57 +11,76 @@
             text-align: center;
             padding: 30px 15px;
             color: #333;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
         }
         .container {
             max-width: 500px;
-            margin: 0 auto;
+            margin: 40px auto;
             background: white;
             padding: 25px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
         }
-        h1 { color: #ff1493; font-size: 24px; }
+        h1 { color: #ff1493; font-size: 26px; }
         h2 { font-size: 20px; }
-        .buttons { margin-top: 25px; }
+        .buttons { margin-top: 35px; }
         .btn {
-            padding: 12px 25px;
+            padding: 15px 30px;
             font-size: 16px;
             font-weight: bold;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            margin: 8px;
+            margin: 10px;
             display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         #yesBtn { background-color: #28a745; color: white; }
-        #noBtn { background-color: #dc3545; color: white; }
-        #secretContent { display: none; margin-top: 30px; animation: fadeIn 1.2s ease; }
+        #noBtn { background-color: #dc3545; color: white; opacity: 0.6; cursor: not-allowed; }
         .badge {
             background-color: #ff69b4;
             color: white;
-            padding: 5px 12px;
+            padding: 6px 15px;
             border-radius: 20px;
             font-size: 13px;
             display: inline-block;
-            margin: 4px;
+            margin: 5px;
+            font-weight: bold;
         }
         .profile-img {
-            width: 85%;
+            width: 90%;
             max-width: 320px;
             border-radius: 15px;
-            margin: 15px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            border: 3px solid #ff69b4;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 4px solid #ff69b4;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        /* Uchadigan yurakchalar uslubi */
+        .heart-particle {
+            position: absolute;
+            color: #ff1493;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 1;
+            animation: flyUp 4s linear infinite;
+        }
+        @keyframes flyUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+<!-- Savol turadigan birinchi alohida sahifa -->
+<div class="container" id="questionPage">
     <h1>🌟 Maftuna go‘zalim meni 🌟</h1>
     <span class="badge">Yuragimning Egasi ❤️</span>
     <span class="badge">Faqat Sizni Sevaman 💖</span>
@@ -73,47 +92,64 @@
         <h3>🌹 "Men bilan bir umr baxtli bo‘lishga, hayot yo‘limni yoritib turishga rozimisiz?" 🌹</h3>
     </blockquote>
 
-    <!-- Musiqa fayli -->
-    <audio id="bgMusic" src="music.mp3" preload="auto"></audio>
-
-    <div class="buttons" id="btnContainer">
+    <div class="buttons">
         <button class="btn" id="yesBtn" onclick="acceptProposal()">❤️ HA, JONIM BILAN ROZIMAN!</button>
-        <button class="btn" id="noBtn" style="opacity: 0.6; cursor: not-allowed;">💔 Yo‘q...</button>
-    </div>
-
-    <!-- "HA" bosilganda ochiladigan qism -->
-    <div id="secretContent">
-        <hr style="border: 1px inset #fff; width: 50%; margin: 20px auto;">
-        
-        <!-- Rasm nomi katta harf bilan Photo.jpg qilib to'g'rilandi -->
-        <img src="Photo.jpg" class="profile-img" alt="Maftuna">
-
-        <h1>🎉 SIZ "HA" DEDINGIZ! MAVJUDLIGINGIZ UCHUN RAHMAT, BAXTIM! 🎉</h1>
-        <span class="badge" style="background-color: red;">Dunyodagi Eng Baxtli Inson ❤️</span>
-        <span class="badge" style="background-color: orange;">Qalbim Quyoshi ☀️</span>
-
-        <h2>💖 Dunyoni quvonchga to‘ldirganimsiz, Maftunam! 💖</h2>
-        <p><i>Bu hayotda bergan eng go‘zal javobingiz uchun rahmat...</i></p>
-
-        <div style="background: #fff0f5; padding: 15px; border-radius: 15px; border-left: 5px solid #ff1493; text-align: left; font-style: italic; margin: 15px 0; font-size: 15px; line-height: 1.5;">
-            "Meni suyukligim! Hamisha oila a'zolaringiz va mening baxtimga sog‘-salomat bo‘ling. Menga hali ko‘p keraksiz... Siz yo‘q bo‘lsangiz, men o‘zimni xotirjam his qilolmayman. Meni o‘zimga tashlab qo‘ymang, men faqat siz bilan yaxshiman. Bu yerda mening yuragim, aqlim va qalbim quyoshi — sizsiz! Sizni judayam yaxshi ko‘raman!" 🌹
-        </div>
-
-        <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRGA! 👩‍❤️‍👨</h3>
-        <p>✨ ✨ ❤️ M A F T U N A & S I Z ❤️ ✨ ✨</p>
-        <p>🎈 2026 💍 💖 💍 🥂 🎈</p>
+        <button class="btn" id="noBtn">💔 Yo‘q...</button>
     </div>
 </div>
 
-<script>
-    function acceptProposal() {
-        var audio = document.getElementById("bgMusic");
-        audio.play().catch(function(error) {
-            console.log("Musiqa xatoligi: ", error);
-        });
+<!-- "HA" bosilganda ochiladigan mutlaqo ALOHIDA yangi sahifa -->
+<div class="container" id="secretPage" style="display: none;">
+    <!-- Yuklagan rasmingiz mana shu yerda eng tepada chiqadi -->
+    <img src="Photo.jpg" class="profile-img" alt="Maftuna">
 
-        document.getElementById("btnContainer").style.display = "none";
-        document.getElementById("secretContent").style.display = "block";
+    <h1>🎉 SIZ "HA" DEDINGIZ! MAVJUDLIGINGIZ UCHUN RAHMAT, BAXTIM! 🎉</h1>
+    <span class="badge" style="background-color: red;">Dunyodagi Eng Baxtli Inson ❤️</span>
+    <span class="badge" style="background-color: orange;">Qalbim Quyoshi ☀️</span>
+
+    <h2>💖 Dunyoni quvonchga to‘ldirganimsiz, Maftunam! 💖</h2>
+    <p><i>Bu hayotda bergan eng go‘zal javobingiz uchun rahmat...</i></p>
+
+    <div style="background: #fff0f5; padding: 20px; border-radius: 15px; border-left: 6px solid #ff1493; text-align: left; font-style: italic; margin: 20px 0; font-size: 15px; line-height: 1.6; box-shadow: inset 0 0 10px rgba(0,0,0,0.02);">
+        "Meni suyukligim! Hamisha oila a'zolaringiz va mening baxtimga sog‘-salomat bo‘ling. Menga hali ko‘p keraksiz... Siz yo‘q bo‘lsangiz, men o‘zimni xotirjam his qilolmayman. Meni o‘zimga tashlab qo‘ymang, men faqat siz bilan yaxshiman. Bu yerda mening yuragim, aqlim va qalbim quyoshi — sizsiz! Sizni judayam yaxshi ko‘raman!" 🌹
+    </div>
+
+    <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRGA! 👩‍❤️‍👨</h3>
+    <p style="font-size: 18px; font-weight: bold; color: #ff1493;">✨ ❤️ M A F T U N A & S I Z ❤️ ✨</p>
+    <p style="font-size: 22px;">🎈 2026 💍 💖 💍 🥂 🎈</p>
+</div>
+
+<!-- Musiqa fayli -->
+<audio id="bgMusic" src="music.mp3" preload="auto" loop></audio>
+
+<script>
+    // Kuchliroq yurakchalar effekti uchun funksiya
+    function createHeart() {
+        const heartText = ["❤️", "💖", "💝", "💕", "🌸"];
+        const heart = document.createElement("div");
+        heart.classList.add("heart-particle");
+        heart.innerText = heartText[Math.floor(Math.random() * heartText.length)];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s"; // 3s dan 5s gacha tezlik
+        heart.style.fontSize = (Math.random() * 15 + 15) + "px"; // har xil o'lcham
+        document.body.appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+
+    function acceptProposal() {
+        // 1. Musiqani chalish
+        var audio = document.getElementById("bgMusic");
+        audio.play().catch(function(e) { console.log("Musiqa ijro etilmadi:", e); });
+
+        // 2. Eski sahifani butunlay yopib, yangi sahifani ochish
+        document.getElementById("questionPage").style.display = "none";
+        document.getElementById("secretPage").style.display = "block";
+
+        // 3. To'xtovsiz yurakchalar yomg'irini yog'dirish
+        setInterval(createHeart, 250);
     }
 </script>
 
