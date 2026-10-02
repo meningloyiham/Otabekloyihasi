@@ -60,7 +60,6 @@
             border: 4px solid #ff69b4;
         }
         
-        /* Uchadigan yurakchalar uslubi */
         .heart-particle {
             position: absolute;
             color: #ff1493;
@@ -79,7 +78,7 @@
 </head>
 <body>
 
-<!-- Savol turadigan birinchi alohida sahifa -->
+<!-- 1-SAHIFA: SAVOL -->
 <div class="container" id="questionPage">
     <h1>🌟 Maftuna go‘zalim meni 🌟</h1>
     <span class="badge">Yuragimning Egasi ❤️</span>
@@ -98,10 +97,10 @@
     </div>
 </div>
 
-<!-- "HA" bosilganda ochiladigan mutlaqo ALOHIDA yangi sahifa -->
+<!-- 2-SAHIFA: BOSILGANDA ALOHIDA CHIQADIGAN QISM -->
 <div class="container" id="secretPage" style="display: none;">
-    <!-- Yuklagan rasmingiz mana shu yerda eng tepada chiqadi -->
-    <img src="Photo.jpg" class="profile-img" alt="Maftuna">
+    <!-- Siz yuborgan rasm havolasi shu yerga joylashtirildi -->
+    <img src="https://ibb.co" class="profile-img" alt="Maftuna">
 
     <h1>🎉 SIZ "HA" DEDINGIZ! MAVJUDLIGINGIZ UCHUN RAHMAT, BAXTIM! 🎉</h1>
     <span class="badge" style="background-color: red;">Dunyodagi Eng Baxtli Inson ❤️</span>
@@ -110,45 +109,38 @@
     <h2>💖 Dunyoni quvonchga to‘ldirganimsiz, Maftunam! 💖</h2>
     <p><i>Bu hayotda bergan eng go‘zal javobingiz uchun rahmat...</i></p>
 
-    <div style="background: #fff0f5; padding: 20px; border-radius: 15px; border-left: 6px solid #ff1493; text-align: left; font-style: italic; margin: 20px 0; font-size: 15px; line-height: 1.6; box-shadow: inset 0 0 10px rgba(0,0,0,0.02);">
+    <div style="background: #fff0f5; padding: 20px; border-radius: 15px; border-left: 6px solid #ff1493; text-align: left; font-style: italic; margin: 20px 0; font-size: 15px; line-height: 1.6;">
         "Meni suyukligim! Hamisha oila a'zolaringiz va mening baxtimga sog‘-salomat bo‘ling. Menga hali ko‘p keraksiz... Siz yo‘q bo‘lsangiz, men o‘zimni xotirjam his qilolmayman. Meni o‘zimga tashlab qo‘ymang, men faqat siz bilan yaxshiman. Bu yerda mening yuragim, aqlim va qalbim quyoshi — sizsiz! Sizni judayam yaxshi ko‘raman!" 🌹
     </div>
 
-    <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRGA! 👩‍❤️‍👨</h3>
+    <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRA! 👩‍❤️‍👨</h3>
     <p style="font-size: 18px; font-weight: bold; color: #ff1493;">✨ ❤️ M A F T U N A & S I Z ❤️ ✨</p>
     <p style="font-size: 22px;">🎈 2026 💍 💖 💍 🥂 🎈</p>
 </div>
 
-<!-- Musiqa fayli -->
 <audio id="bgMusic" src="music.mp3" preload="auto" loop></audio>
 
 <script>
-    // Kuchliroq yurakchalar effekti uchun funksiya
     function createHeart() {
         const heartText = ["❤️", "💖", "💝", "💕", "🌸"];
         const heart = document.createElement("div");
         heart.classList.add("heart-particle");
         heart.innerText = heartText[Math.floor(Math.random() * heartText.length)];
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 2 + 3) + "s"; // 3s dan 5s gacha tezlik
-        heart.style.fontSize = (Math.random() * 15 + 15) + "px"; // har xil o'lcham
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        heart.style.fontSize = (Math.random() * 15 + 15) + "px";
         document.body.appendChild(heart);
         
-        setTimeout(() => {
-            heart.remove();
-        }, 4000);
+        setTimeout(() => { heart.remove(); }, 4000);
     }
 
     function acceptProposal() {
-        // 1. Musiqani chalish
         var audio = document.getElementById("bgMusic");
         audio.play().catch(function(e) { console.log("Musiqa ijro etilmadi:", e); });
 
-        // 2. Eski sahifani butunlay yopib, yangi sahifani ochish
         document.getElementById("questionPage").style.display = "none";
         document.getElementById("secretPage").style.display = "block";
 
-        // 3. To'xtovsiz yurakchalar yomg'irini yog'dirish
         setInterval(createHeart, 250);
     }
 </script>
