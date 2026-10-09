@@ -3,153 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maftunaga Xat 💖</title>
+    <title>Mohlaroyim uchun maxsus 💖</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #ffe6e6 !important; /* Majburiy yorqin fon */
-            text-align: center;
-            padding: 20px 10px;
-            color: #333 !important;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        /* Orqa fondagi yurakchalar */
+        .heart-bg {
+            position: absolute;
+            font-size: 25px;
+            color: rgba(255, 77, 106, 0.7);
+            animation: floatUp 6s linear infinite;
+            z-index: 1;
+            bottom: -50px;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-105vh) scale(1.3); opacity: 0; }
         }
         .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
             max-width: 450px;
-            margin: 20px auto;
-            background: #ffffff !important; /* Majburiy oq fon */
-            padding: 20px;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.2);
-            position: relative;
+            width: 90%;
             z-index: 10;
+            border: 2px solid #ffb3b3;
+            transition: all 0.5s ease;
         }
-        h1 { color: #ff1493 !important; font-size: 24px; }
-        h2 { color: #cc1177 !important; font-size: 19px; }
-        .buttons { margin-top: 30px; }
-        .btn {
-            padding: 15px 25px;
-            font-size: 16px;
+        h1 {
+            color: #d63031;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 18px;
+            color: #4b4b4b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+        }
+        button {
+            padding: 12px 35px;
+            font-size: 18px;
             font-weight: bold;
             border: none;
-            border-radius: 12px;
+            border-radius: 25px;
             cursor: pointer;
-            margin: 10px;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
-        #yesBtn { background-color: #28a745; color: white; }
-        #noBtn { background-color: #dc3545; color: white; opacity: 0.6; cursor: not-allowed; }
-        .badge {
-            background-color: #ff69b4;
+        #yesBtn {
+            background-color: #2ecc71;
             color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            display: inline-block;
-            margin: 5px;
-            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
         }
-        .profile-img {
-            width: 95%;
-            max-width: 320px;
-            border-radius: 20px;
-            margin: 15px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            border: 5px solid #ff69b4;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+        #yesBtn:hover {
+            transform: scale(1.1);
         }
-        .heart-particle {
-            position: fixed;
-            color: #ff1493;
-            font-size: 30px;
-            pointer-events: none;
-            z-index: 9999 !important;
-            animation: flyUp 3.5s linear infinite;
-            text-shadow: 0 0 8px #fff, 0 0 15px #ff1493;
+        #noBtn {
+            background-color: #e74c3c;
+            color: white;
+            position: absolute;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
         }
-        @keyframes flyUp {
-            0% { transform: translateY(105vh) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        /* Ikkinchi sahifa uslubi (Rasm va Tabrik) */
+        .celebrate-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .celebrate-screen img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            border: 3px solid #ff4d6d;
+        }
+        .love-text {
+            font-size: 18px;
+            color: #2c3e50;
+            line-height: 1.7;
+            font-weight: 500;
+            background: #fff0f3;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #ff4d6d;
         }
     </style>
 </head>
-<body style="background: #ffe6e6 !important;">
+<body>
 
-<!-- 1-SAHIFA: SAVOL -->
-<div class="container" id="questionPage" style="background: #ffffff !important;">
-    <h1>🌟 Maftuna go‘zalim meni 🌟</h1>
-    <span class="badge">Yuragimning Egasi ❤️</span>
-    <span class="badge">Faqat Sizni Sevaman 💖</span>
+    <!-- Animatsiyali yuraklar generatori uchun konteyner -->
+    <div id="heartsContainer"></div>
 
-    <h2>💖 Chiroyligim, men sizni judayam yaxshi ko‘raman! 💖</h2>
-    <p style="color: #555;"><i>Hayotimning har bir kuni siz bilan go‘zal va mazmunli...</i></p>
+    <!-- Asosiy Oyna -->
+    <div class="container" id="mainBox">
+        <div id="questionScreen">
+            <h1>Mohlaroyim uchun go'zal tabrik! 🌹</h1>
+            <p>Mening qadrli, sadoqatli, latofatli va go'zal yorim Mohlaroyim! Siz men bilan butun umrga birga bo'lishga, menga turmushga chiqishga rozimisiz...?? 💍</p>
+            <div class="btn-group">
+                <button id="yesBtn" onclick="acceptLove()">Ha</button>
+                <button id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">Yo'q</button>
+            </div>
+        </div>
 
-    <blockquote style="border-left: 4px solid #ff69b4; padding-left: 10px; margin: 15px 0;">
-        <h3 style="color: #333;">🌹 "Men bilan bir umr baxtli bo‘lishga, hayot yo‘limni yoritib turishga rozimisiz?" 🌹</h3>
-    </blockquote>
-
-    <div class="buttons">
-        <button class="btn" id="yesBtn" onclick="acceptProposal()">❤️ HA, JONIM BILAN ROZIMAN!</button>
-        <button class="btn" id="noBtn">💔 Yo‘q...</button>
-    </div>
-</div>
-
-<!-- 2-SAHIFA: BOSILGANDA ALOHIDA CHIQADIGAN QISM -->
-<div class="container" id="secretPage" style="display: none; background: #ffffff !important;">
-    
-    <!-- RASM ENG TEPAGA CHIQARILDI -->
-    <img src="https://ibb.co" class="profile-img" alt="Maftuna">
-
-    <h1>🎉 SIZ "HA" DEDINGIZ! MAVJUDLIGINGIZ UCHUN RAHMAT, BAXTIM! 🎉</h1>
-    <span class="badge" style="background-color: red;">Dunyodagi Eng Baxtli Inson ❤️</span>
-    <span class="badge" style="background-color: orange;">Qalbim Quyoshi ☀️</span>
-
-    <h2>💖 Dunyoni quvonchga to‘ldirganimsiz, Maftunam! 💖</h2>
-    <p style="color: #555;"><i>Bu hayotda bergan eng go‘zal javobingiz uchun rahmat...</i></p>
-
-    <div style="background: #fff0f5 !important; padding: 15px; border-radius: 15px; border-left: 6px solid #ff1493; text-align: left; font-style: italic; margin: 15px 0; font-size: 15px; line-height: 1.6; color: #333;">
-        "Meni suyukligim! Hamisha oila a'zolaringiz va mening baxtimga sog‘-salomat bo‘ling. Menga hali ko‘p keraksiz... Siz yo‘q bo‘lsangiz, men o‘zimni xotirjam his qilolmayman. Meni o‘zimga tashlab qo‘ymang, men faqat siz bilan yaxshiman. Bu yerda mening yuragim, aqlim va qalbim quyoshi — sizsiz! Sizni judayam yaxshi ko‘raman!" 🌹
+        <!-- "Ha" bosilganda chiqadigan oyna -->
+        <div class="celebrate-screen" id="happyScreen">
+            <h1>❤ Rozi bo'lishingizni bilardim! ❤</h1>
+            <!-- Siz aytgan photo.jpg shu yerda ochiladi -->
+            <img src="photo.jpg" alt="Mohlaroyim">
+            <div class="love-text">
+                Sizni dunyolarga alishmaydigan, umrining oxirigacha sevadigan insoningiz bor! Alloh ikki dunyoda bizni ayirmasin. <br><br>
+                Mening suyukligim, hamisha oila azolaringiz va mening baxtimga sog'-salomat bo'ling, menga hali ko'p keraksiz. Siz yo'q bo'lsangiz men o'zimni xotirjam his qilmayman. Bu yerda mening yuragim, aqlim, qalbim quyoshi sizsiz. <br><br>
+                O'qishlaringizda yuksak muvaffaqiyatlarga erishing, o'zingiz xohlagandek shifokor bo'lib yetishing. Germaniyaga borish nasib qilsin! Noyabr oyida uchrashishni intizorlik bilan kutaman. <b>Sizni judayam yaxshi ko'raman! 🫂❤️</b>
+            </div>
+        </div>
     </div>
 
-    <h3>👩‍❤️‍👨 BIZ BIRGAMIZ, BUTUN UMRGA! 👩‍❤️‍👨</h3>
-    <p style="font-size: 18px; font-weight: bold; color: #ff1493; margin: 5px 0;">✨ ❤️ M A F T U N A & S I Z ❤️ ✨</p>
-    <p style="font-size: 20px; margin: 5px 0;">🎈 2026 💍 💖 💍 🥂 🎈</p>
-</div>
+    <!-- Musiqa fayli -->
+    <audio id="bgMusic" src="music.mp3" loop></audio>
 
-<audio id="bgMusic" src="music.mp3" preload="auto" loop></audio>
+    <script>
+        // Uchib yuruvchi yurakchalar hosil qilish
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            for (let i = 0; i < 25; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart-bg');
+                heart.innerText = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
 
-<script>
-    function createHeart() {
-        const heartText = ["❤️", "💖", "💝", "💕", "🌸"];
-        const heart = document.createElement("div");
-        heart.classList.add("heart-particle");
-        heart.innerText = heartText[Math.floor(Math.random() * heartText.length)];
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 1.5 + 2) + "s"; // Yurakchalar tezroq ko'rinishi uchun tezlik oshirildi
-        heart.style.fontSize = (Math.random() * 20 + 18) + "px";
-        document.body.appendChild(heart);
-        
-        setTimeout(() => { heart.remove(); }, 3500);
-    }
+        // Yo'q tugmasini qochirish funksiyasi
+        function moveNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            // Tugma ota-konteyner ichidan chiqib ketmasligi uchun chegaralash
+            const x = Math.random() * 250 - 125; 
+            const y = Math.random() * 200 - 100;
+            
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        }
 
-    function acceptProposal() {
-        var audio = document.getElementById("bgMusic");
-        audio.play().catch(function(e) { console.log("Musiqa xatosi:", e); });
+        // Ha tugmasi bosilganda ishlaydigan mantiq
+        function acceptLove() {
+            // Birinchi ekranni yashirish va ikkinchisini ko'rsatish
+            document.getElementById('questionScreen').style.display = 'none';
+            document.getElementById('happyScreen').style.display = 'flex';
+            
+            // Konteyner o'lchamini rasmga moslab kengaytirish
+            document.getElementById('mainBox').style.maxWidth = '600px';
 
-        document.getElementById("questionPage").style.display = "none";
-        document.getElementById("secretPage").style.display = "block";
-
-        // Yurakchalar tinimsiz va ko'p uchishi uchun vaqt qisqartirildi
-        setInterval(createHeart, 100);
-    }
-</script>
-
+            // Musiqani ijro etish
+            const music = document.getElementById('bgMusic');
+            music.play().catch(error => {
+                console.log("Musiqa ijro etilishida xatolik (brauzer cheklovi):", error);
+            });
+        }
+    </script>
 </body>
 </html>
