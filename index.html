@@ -19,9 +19,9 @@
             align-items: center;
             padding: 15px;
             position: relative;
-            overflow: hidden; /* Skroll butunlay o'chirildi */
+            overflow: hidden;
         }
-        /* Fondagi juda yorqin neon yuraklar */
+        /* Fondagi yorqin neon yuraklar */
         .heart-bg {
             position: absolute;
             font-size: 30px;
@@ -33,10 +33,10 @@
             pointer-events: none;
         }
         @keyframes floatUp {
-            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.9; }
+            0 { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.9; }
             100% { transform: translateY(-125vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
-        /* Shaffof oyna effekti */
+        /* Shaffof va chiroyli oyna (Glassmorphism) */
         .container {
             background: rgba(40, 20, 35, 0.7);
             backdrop-filter: blur(10px);
@@ -58,15 +58,20 @@
             background: linear-gradient(45deg, #ff4d8d, #ff1a4f, #ff4d6d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .question-text {
-            font-size: 17px;
+            font-size: 15px;
             color: #ffffff;
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 14px;
+            border-left: 4px solid #ff1a4f;
         }
         .btn-group {
             display: flex;
@@ -97,7 +102,7 @@
             position: absolute;
             z-index: 999;
         }
-        /* Ikkinchi oyna - Rasm va Matn bir joyda */
+        /* Ikkinchi oyna */
         .celebrate-screen {
             display: none;
             flex-direction: column;
@@ -106,17 +111,16 @@
         }
         .img-wrapper {
             width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .celebrate-screen img {
             width: 100%;
-            max-height: 220px; /* Rasm ekranni to'ldirib yubormasligi uchun kichiklashtirildi */
+            max-height: 200px;
             object-fit: cover;
             border-radius: 15px;
             border: 3px solid #ff1a4f;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        /* Jamlangan ixcham matn bloki */
         .love-block {
             font-size: 14px;
             color: #ffffff;
@@ -140,17 +144,21 @@
     <div id="heartsContainer"></div>
 
     <div class="container" id="mainBox">
-        <!-- Birinchi oyna -->
+        <!-- Birinchi oyna: Uzun va shirin tabrik matni bilan -->
         <div id="questionScreen">
-            <h1 class="gradient-title">Mohlaroyim, Tug'ilgan Kuningiz Muborak! ✨</h1>
-            <p class="question-text">Mening go'zal yorim Mohlaroyim! Siz men bilan birga bo'lishga, menga turmushga chiqishga rozimisiz...?? 💍❤️</p>
+            <h1 class="gradient-title">Siz uchun maxsus tabrik! ✨🌹</h1>
+            <div class="question-text">
+                <b>Assalomu alaykum, bugungi tavallud ayyomingiz muborak bo'lsin!</b> <br><br>
+                Mening qadrli, sadoqatli, latofatli va go'zal yorim Mohlaroyim! Sizni bugungi shukrona kuningiz bilan chin qalbimdan tabriklayman. Dunyodagi eng go'zal tilaklar siz uchun. <br><br>
+                Siz men bilan baxtli hayot yo'lini bosib o'tishga, butun umrga birga bo'lishga va <b>menga turmushga chiqishga rozimisiz...?? 💍❤️</b>
+            </div>
             <div class="btn-group">
                 <button id="yesBtn" onclick="acceptLove()">Ha</button>
                 <button id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">Yo'q</button>
             </div>
         </div>
 
-        <!-- Ikkinchi oyna (Hamma narsa bitta ekranda jamlangan) -->
+        <!-- Ikkinchi oyna: "Ha" bosilganda chiqadigan sahifa -->
         <div class="celebrate-screen" id="happyScreen">
             <h1 class="gradient-title" style="font-size: 20px; margin-bottom: 10px;">❤ Rozi bo'lishingizni bilardim! ❤</h1>
             
