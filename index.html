@@ -20,39 +20,78 @@
             align-items: center;
             min-height: 100vh;
             padding: 10px;
-            overflow: hidden;
+            overflow-x: hidden;
+            position: relative;
         }
+        /* Fondagi mayda yurakchalar */
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 20, 147, 0.2);
+            font-size: 20px;
+            pointer-events: none;
+            animation: floatHearts 5s infinite ease-in-out;
+        }
+        .h1 { top: 12%; left: 15%; animation-delay: 0s; }
+        .h2 { top: 25%; right: 10%; animation-delay: 1.5s; }
+        .h3 { bottom: 18%; left: 12%; animation-delay: 2.5s; }
+        .h4 { bottom: 22%; right: 15%; animation-delay: 4s; }
+
         .container {
             width: 100%;
-            max-width: 380px;
+            max-width: 400px;
             background: rgba(15, 4, 9, 0.95);
-            border: 1.5px solid #ff1493;
-            border-radius: 15px;
+            border: 2px solid #ff1493;
+            border-radius: 20px;
             padding: 15px;
-            box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
             text-align: center;
+            z-index: 2;
         }
-        .heart-icon {
-            color: #ff1493;
-            font-size: 16px;
-            margin-bottom: 5px;
-            display: inline-block;
-            animation: pulse 1.5s infinite;
-        }
-        h1 {
+        
+        .proposal-title {
             font-size: 16px;
             color: #ff1493;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             font-weight: 600;
         }
+
+        /* Yuqori rasm bloki */
+        .photo-card {
+            display: none;
+            border: 1.5px solid #ff1493;
+            border-radius: 15px;
+            padding: 10px;
+            background: rgba(255, 20, 147, 0.05);
+            margin-bottom: 15px;
+        }
+        .photo-card h2 {
+            font-size: 14px;
+            color: #ff1493;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .photo-box {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 20, 147, 0.3);
+        }
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Matn bloki */
         .card-text {
-            background: rgba(255, 20, 147, 0.03);
-            border-left: 2.5px solid #ff1493;
-            border-radius: 4px 10px 10px 4px;
-            padding: 12px 14px;
+            background: rgba(255, 20, 147, 0.04);
+            border-left: 3px solid #ff1493;
+            border-radius: 4px 12px 12px 4px;
+            padding: 12px 15px;
             text-align: left;
             line-height: 1.45;
-            font-size: 12.5px;
+            font-size: 13px;
             color: #f0e6eb;
         }
         .card-text p {
@@ -61,6 +100,11 @@
         .card-text p:last-child {
             margin-bottom: 0;
         }
+        
+        .secret-text {
+            display: none;
+        }
+        
         .highlight {
             color: #ff4500;
             font-weight: bold;
@@ -71,19 +115,20 @@
         }
         .final-love {
             text-align: center;
-            font-size: 13px;
+            font-size: 13.5px;
             font-weight: bold;
             color: #ff1493;
             margin-top: 6px;
         }
+        
         .btn-container {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             margin-top: 15px;
         }
         button {
-            padding: 8px 25px;
+            padding: 8px 30px;
             font-size: 14px;
             font-weight: 600;
             border: none;
@@ -103,38 +148,71 @@
             background-color: #e63946;
             color: white;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
+
+        @keyframes floatHearts {
+            0% { transform: translateY(0); opacity: 0.2; }
+            50% { transform: translateY(-10px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 0.2; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-heart h1">❤️</div>
+    <div class="bg-heart h2">💖</div>
+    <div class="bg-heart h3">❤️</div>
+    <div class="bg-heart h4">💕</div>
+
     <div class="container">
-        <div class="heart-icon">❤️ Rozi bo'lishingizni bilardim! ❤️</div>
-        <h1>Siz uchun maxsus tabrik! ✨</h1>
         
+        <div id="mainTitle" class="proposal-title">Siz uchun maxsus tabrik! ✨</div>
+        
+        <!-- Yuqori qism (Rasm) -->
+        <div id="photoCard" class="photo-card">
+            <h2>❤️ Rozi bo'lishingizni bilardim! ❤️</h2>
+            <div class="photo-box">
+                <img src="rasm.jpg" alt="Mohlaroyim"> 
+            </div>
+        </div>
+        
+        <!-- Matnlar joyi -->
         <div class="card-text">
-            <p>Assalomu alaykum, mening qadrli, sadoqatli, latofatli va bebahoyim <span class="bold-text">Mohlaroyim</span>!</p>
-            
-            <p>Sizni bugungi shukrona kuningiz bilan chin qalbimdan muborakbod etaman. Bu dunyodagi eng go'zal tilaklar faqat Siz uchundir. Siz hayotimga kirib kelganingizdan beri dunyoyim tamoman o'zgardi, borlig'im cheksiz baxtga to'ldi.</p>
-            
-            <p class="highlight">Siz men bilan baxtli hayot yo'lini birga bosib o'tishga, butun umrga birga bo'lishga va menga turmushga chiqishga rozimisiz...? 💍❤️</p>
-            
-            <p>Sizni umrining oxirigacha sevadigan insoningiz bor! Hamisha oilangiz va mening baxtimga sog' bo'ling, ko'zlaringizdan faqat quvonch yoshlari oqsin. Qalbim quyoshi ham, hayotim mazmuni ham yolg'iz Sizsiz, Mohlaroyim.</p>
-            
-            <p>O'qishlaringizda muvaffaqiyat qozonib, shifokor bo'lib yetishing. Germaniyaga birgalikda boraylik! Noyabrdagi uchrashuvni intizorlik bilan kutaman.</p>
-            
-            <p class="final-love">Sizni judayam yaxshi ko'raman! 💖✨</p>
+            <!-- 1-BOSHILGANDAGI OYNA -->
+            <div id="firstPage">
+                <p>Assalomu alaykum, mening qadrli, sadoqatli, latofatli va bebahoyim <span class="bold-text">Mohlaroyim</span>!</p>
+                <p>Sizni bugungi shukrona kuningiz bilan chin qalbimdan muborakbod etaman. Bu dunyodagi eng go'zal tilaklar faqat Siz uchundir.</p>
+                <p class="highlight" style="text-align: center; margin: 10px 0;">Siz men bilan baxtli hayot yo'lini birga bosib o'tishga, butun umrga birga bo'lishga va menga turmushga chiqishga rozimisiz...? 💍❤️</p>
+            </div>
+
+            <!-- "HA" BOSILGANDAN KEYINGI UZUN MATN -->
+            <div id="secondPage" class="secret-text">
+                <p>Siz mening hayotimga kirib kelganingizdan beri dunyoyim tamoman o'zgardi, borlig'im cheksiz baxtga to'ldi.</p>
+                <p>Sizni umrining oxirigacha sevadigan insoningiz bor! Hamisha oilangiz va mening baxtimga sog' bo'ling, ko'zlaringizdan faqat quvonch yoshlari oqsin. Qalbim quyoshi ham, hayotim mazmuni ham yolg'iz Sizsiz, Mohlaroyim.</p>
+                <p>O'qishlaringizda muvaffaqiyat qozonib, shifokor bo'lib yetishing. Germaniyaga birgalikda boraylik! Noyabrdagi uchrashuvni intizorlik bilan kutaman.</p>
+                <p class="final-love">Sizni judayam yaxshi ko'raman! 💖✨</p>
+            </div>
         </div>
 
-        <div class="btn-container">
-            <button class="btn-yes" onclick="alert('Baxtimizga ko\'z tegmasin! 💍❤️')">Ha</button>
+        <!-- Tugmalar -->
+        <div id="btnContainer" class="btn-container">
+            <button class="btn-yes" onclick="acceptProposal()">Ha</button>
             <button class="btn-no" onclick="alert('Baribir o\'zimniki bo\'lasiz! 😜')">Yo'q</button>
         </div>
     </div>
 
+    <script>
+        function acceptProposal() {
+            // Birinchi sahifadagi qisqa matn va sarlavhani yashirish
+            document.getElementById("firstPage").style.display = "none";
+            document.getElementById("mainTitle").style.display = "none";
+            
+            // "Ha" bosilganda rasm va yangi uzun matnni ochish
+            document.getElementById("photoCard").style.display = "block";
+            document.getElementById("secondPage").style.display = "block";
+            
+            // Tugmalarni yashirish
+            document.getElementById("btnContainer").style.display = "none";
+        }
+    </script>
 </body>
 </html>
