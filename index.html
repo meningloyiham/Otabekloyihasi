@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohlaroyim uchun</title>
+    <title>Siz uchun maxsus tabrik!</title>
     <style>
         body {
             background-color: #000;
@@ -17,7 +17,10 @@
             padding: 20px;
             box-sizing: border-box;
             overflow-x: hidden;
+            position: relative;
         }
+        
+        /* Qora kontyener */
         .container {
             border: 2px solid #ff007f;
             border-radius: 20px;
@@ -25,17 +28,31 @@
             max-width: 450px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
-            background-color: #050505;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+            background-color: rgba(5, 5, 5, 0.95);
             position: relative;
-            z-index: 10;
+            z-index: 100;
         }
+
+        .hidden {
+            display: none !important;
+        }
+
         .header {
             color: #ff007f;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             margin-bottom: 20px;
         }
+
+        /* Qizil chiziqli iqtibos (quote) uslubi */
+        .quote-box {
+            border-left: 3px solid #ff007f;
+            padding-left: 15px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
         .image-container {
             margin-bottom: 25px;
         }
@@ -45,38 +62,72 @@
             border-radius: 10px;
         }
         .text-content {
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.6;
-            text-align: left;
-            margin-bottom: 20px;
         }
         .text-content p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .footer-text {
             color: #ff007f;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: bold;
             margin-top: 20px;
         }
-        /* Orqa fondagi uchib yuruvchi yurakchalar */
+
+        /* Tugmalar dizayni */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 25px;
+            position: relative;
+            height: 60px;
+        }
+        .btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-yes {
+            background-color: #ff007f;
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+            z-index: 102;
+        }
+        .btn-no {
+            background-color: #e63946;
+            color: white;
+            position: absolute;
+            z-index: 101;
+            box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
+        }
+
+        /* O'TA YORQIN UChUVChI YURAKChALAR (Qora fon ustidan o'tadi) */
         .heart {
             position: fixed;
-            font-size: 24px;
-            color: #ff007f;
+            font-size: 26px;
             user-select: none;
             pointer-events: none;
-            animation: floatUp 4s linear infinite;
-            opacity: 0.8;
-            z-index: 1;
+            animation: floatUp 4.5s linear infinite;
+            z-index: 9999;
+            filter: drop-shadow(0 0 8px #ff007f) drop-shadow(0 0 15px #ff007f);
         }
+
         @keyframes floatUp {
             0% {
                 transform: translateY(105vh) scale(0) rotate(0deg);
-                opacity: 1;
+                opacity: 0;
             }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
             100% {
-                transform: translateY(-10vh) scale(1.3) rotate(360deg);
+                transform: translateY(-10vh) scale(1.4) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -84,22 +135,40 @@
 </head>
 <body>
 
-    <!-- Musiqa kodi -->
-    <audio id="bg-music" loop autoplay hidden>
+    <!-- Musiqa fayli -->
+    <audio id="bg-music" loop hidden>
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="container">
+    <!-- 1-BOSQICh: BIRINChI TABRIK OYNASI -->
+    <div class="container" id="greeting-box">
+        <div class="header">Siz uchun maxsus tabrik! ✨🌹</div>
+        
+        <div class="quote-box">
+            <div class="text-content">
+                <p>Assalomu alaykum, bugungi tavallud ayyomingiz muborak bo'lsin!</p>
+                <p>Mening qadrli, sadoqatli, latofatli va go'zalim Mohlaroyim! Sizni bugungi shukrona kuningiz bilan chin qalbimdan tabriklayman. Dunyodagi eng go'zal tilaklar siz uchun.</p>
+                <p>Siz men bilan baxtli hayot yo'lini bosib o'tishga, butun umrga birga bo'lishga va menga turmushga chiqishga rozimisiz...?? 💍❤️</p>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn btn-yes" onclick="showSecretPage()">Ha</button>
+            <button class="btn btn-no" id="nobtn" onmouseover="escapeButton()" onclick="escapeButton()">Yo'q</button>
+        </div>
+    </div>
+
+    <!-- 2-BOSQICh: ASOSIY MATN -->
+    <div class="container hidden" id="main-box">
         <div class="header">
             ❤️ Rozi bo'lishingizni bilardim! ❤️
         </div>
         
         <div class="image-container">
-            <!-- Rasm kodi -->
             <img src="photo.jpg" alt="Mohlaroyim">
         </div>
 
-        <div class="text-content">
+        <div class="text-content" style="text-align: left;">
             <p>Siz mening hayotimga kirib kelganingizdan beri dunyoyim tamoman o'zgardi, borlig'im cheksiz baxtga to'ldi.</p>
             
             <p>Sizni umrining oxirigacha sevadigan insoningiz bor! Hamisha oilangiz va mening baxtimga sog' bo'ling, ko'zlaringizdan faqat quvonch yoshlari oqsin. Qalbim quyoshi ham, hayotim mazmuni ham yolg'iz Sizsiz, Mohlaroyim.</p>
@@ -113,13 +182,16 @@
     </div>
 
     <script>
-        // Yurakchalar yaratish effekti
+        // Yurakchalar yomg'iri effekti
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            heart.innerHTML = '❤️';
+            
+            const heartTypes = ['❤️', '💖', '🌹', '💕'];
+            heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's'; 
+            heart.style.animationDuration = Math.random() * 2 + 3.5 + 's'; 
             document.body.appendChild(heart);
             
             setTimeout(() => {
@@ -127,15 +199,29 @@
             }, 4500);
         }
         
-        setInterval(createHeart, 300);
+        setInterval(createHeart, 250);
 
-        // Brauzerda musiqani faollashtirish (ekranga bir marta bosilganda chaladi)
-        window.addEventListener('click', () => {
+        // "Yo'q" tugmasini qochiradigan funksiya
+        function escapeButton() {
+            const btn = document.getElementById('nobtn');
+            const x = Math.random() * (window.innerWidth - 120);
+            const y = Math.random() * (window.innerHeight - 60);
+            
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // "Ha" bosilganda sahifani almashtirish va musiqa qo'yish
+        function showSecretPage() {
+            document.getElementById('greeting-box').classList.add('hidden');
+            document.getElementById('main-box').classList.remove('hidden');
+            
             const audio = document.getElementById('bg-music');
             if (audio) {
-                audio.play().catch(err => console.log("Musiqa chalishda xatolik:", err));
+                audio.play().catch(err => console.log("Musiqa ijro etilmadi:", err));
             }
-        });
+        }
     </script>
 </body>
 </html>
