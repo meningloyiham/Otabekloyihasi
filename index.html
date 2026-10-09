@@ -11,95 +11,93 @@
             padding: 0;
         }
         body {
-            background: linear-gradient(135deg, #ffe6e6 0%, #ffb3c1 100%);
+            background: linear-gradient(135deg, #1a0813 0%, #0d040a 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             position: relative;
-            overflow-x: hidden;
+            overflow: hidden; /* Skroll butunlay o'chirildi */
         }
-        /* Orqa fondagi yaqqol ko'rinib turuvchi yurakchalar */
+        /* Fondagi juda yorqin neon yuraklar */
         .heart-bg {
             position: absolute;
             font-size: 30px;
-            color: rgba(255, 26, 79, 0.45);
+            color: #ff1a4f;
+            text-shadow: 0 0 15px #ff1a4f, 0 0 30px #ff003c;
             animation: floatUp 5s linear infinite;
             z-index: 1;
-            bottom: -50px;
+            bottom: -60px;
             pointer-events: none;
         }
         @keyframes floatUp {
-            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-120vh) scale(1.4) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.9; }
+            100% { transform: translateY(-125vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
+        /* Shaffof oyna effekti */
         .container {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 40px 30px;
+            background: rgba(40, 20, 35, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 25px 20px;
             border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(214, 48, 49, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 26, 79, 0.2);
             text-align: center;
-            max-width: 500px;
+            max-width: 480px;
             width: 100%;
             z-index: 10;
-            border: 3px solid #ff4d6d;
-            transition: all 0.4s ease-in-out;
-            margin: auto;
+            border: 2px solid rgba(255, 26, 79, 0.4);
+            max-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        /* Birinchi sahifa sarlavhasi (Gradient chiroyli ranglar bilan) */
         .gradient-title {
-            background: linear-gradient(45deg, #ff007f, #ff4d6d, #ff0040);
+            background: linear-gradient(45deg, #ff4d8d, #ff1a4f, #ff4d6d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 30px;
+            font-size: 24px;
             font-weight: 800;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
         }
         .question-text {
-            font-size: 19px;
-            color: #333;
-            line-height: 1.7;
-            margin-bottom: 35px;
-            font-weight: 500;
+            font-size: 17px;
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
-        /* Tugmalar guruhi */
         .btn-group {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 25px;
             position: relative;
-            height: 60px;
-            margin-top: 10px;
+            height: 50px;
         }
         button {
-            padding: 14px 40px;
+            padding: 12px 40px;
             font-size: 18px;
             font-weight: 700;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         #yesBtn {
             background: linear-gradient(45deg, #2ecc71, #27ae60);
             color: white;
+            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
         }
-        #yesBtn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 7px 20px rgba(46, 204, 113, 0.4);
-        }
+        #yesBtn:hover { transform: scale(1.05); }
         #noBtn {
             background: linear-gradient(45deg, #e74c3c, #c0392b);
             color: white;
             position: absolute;
             z-index: 999;
         }
-        /* Ikkinchi sahifa - Rasm va Matn alohida-alohida va kengaytirilgan */
+        /* Ikkinchi oyna - Rasm va Matn bir joyda */
         .celebrate-screen {
             display: none;
             flex-direction: column;
@@ -108,119 +106,96 @@
         }
         .img-wrapper {
             width: 100%;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         .celebrate-screen img {
             width: 100%;
-            max-height: 450px;
+            max-height: 220px; /* Rasm ekranni to'ldirib yubormasligi uchun kichiklashtirildi */
             object-fit: cover;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border: 4px solid #ff4d6d;
+            border-radius: 15px;
+            border: 3px solid #ff1a4f;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        /* Har bir matn bloki otdelniy va chiroyli tartibda */
+        /* Jamlangan ixcham matn bloki */
         .love-block {
-            font-size: 18px;
-            color: #2c3e50;
-            line-height: 1.8;
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.5;
             font-weight: 500;
-            background: #fff5f6;
-            padding: 22px;
-            border-radius: 16px;
-            border-left: 6px solid #ff1a4f;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border-radius: 14px;
+            border-left: 5px solid #ff1a4f;
             text-align: left;
-            margin-bottom: 15px;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .love-block b {
-            color: #d63031;
+            color: #ff4d8d;
         }
     </style>
 </head>
 <body>
 
-    <!-- Har doim yaqqol uchib yuradigan yuraklar -->
     <div id="heartsContainer"></div>
 
-    <!-- Asosiy Konteyner -->
     <div class="container" id="mainBox">
-        
-        <!-- Birinchi oyna: Savol sahifasi -->
+        <!-- Birinchi oyna -->
         <div id="questionScreen">
-            <h1 class="gradient-title">Mohlaroyim, Tug'ilgan Kuningiz Muborak Bo'lsin! ✨🌹</h1>
-            <p class="question-text">Mening qadrli, sadoqatli, latofatli va go'zal yorim Mohlaroyim! Siz men bilan butun umrga birga bo'lishga, menga turmushga chiqishga rozimisiz...?? 💍❤️</p>
+            <h1 class="gradient-title">Mohlaroyim, Tug'ilgan Kuningiz Muborak! ✨</h1>
+            <p class="question-text">Mening go'zal yorim Mohlaroyim! Siz men bilan birga bo'lishga, menga turmushga chiqishga rozimisiz...?? 💍❤️</p>
             <div class="btn-group">
                 <button id="yesBtn" onclick="acceptLove()">Ha</button>
                 <button id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">Yo'q</button>
             </div>
         </div>
 
-        <!-- Ikkinchi oyna: "Ha" bosilganda chiqadigan maxsus sahifa -->
+        <!-- Ikkinchi oyna (Hamma narsa bitta ekranda jamlangan) -->
         <div class="celebrate-screen" id="happyScreen">
-            <h1 class="gradient-title" style="font-size: 26px; margin-bottom: 20px;">❤ Rozi bo'lishingizni bilardim! ❤</h1>
+            <h1 class="gradient-title" style="font-size: 20px; margin-bottom: 10px;">❤ Rozi bo'lishingizni bilardim! ❤</h1>
             
-            <!-- Rasm endi alohida blidda, qisilib qolmaydi -->
             <div class="img-wrapper">
                 <img src="photo.jpg" alt="Mohlaroyim">
             </div>
             
-            <!-- Har bir matn alohida chiroyli blokda -->
             <div class="love-block">
-                Sizni dunyolarga alishmaydigan, umrining oxirigacha sevadigan insoningiz bor! Alloh ikki dunyoda bizni ayirmasin.
-            </div>
-            
-            <div class="love-block">
-                Mening suyukligim, hamisha oila azolaringiz va mening baxtimga sog'-salomat bo'ling, menga hali ko'p keraksiz. Siz yo'q bo'lsangiz men o'zimni xotirjam his qilmayman. Bu yerda mening yuragim, aqlim, qalbim quyoshi sizsiz.
-            </div>
-            
-            <div class="love-block">
-                O'qishlaringizda yuksak muvaffaqiyatlarga erishing, o'zingiz xohlagandek shifokor bo'lib yetishing. Germaniyaga borish nasib qilsin! Noyabr oyida uchrashishni intizorlik bilan kutaman. <br><br>
-                <center><b>Sizni judayam yaxshi ko'raman! 🫂❤️🏆</b></center>
+                Sizni umrining oxirigacha sevadigan insoningiz bor! Hamisha oilangiz va mening baxtimga sog' bo'ling. Siz yo'q bo'lsangiz men o'zimni xotirjam his qilmayman, qalbim quyoshi sizsiz. <br>
+                O'qishlarda muvaffaqiyat qozonib, shifokor bo'lib yetishing, Germaniyaga birga boraylik! Noyabrdagi uchrashuvni intizorlik bilan kutaman. <b>Sizni judayam yaxshi ko'raman! 🫂❤️</b>
             </div>
         </div>
     </div>
 
-    <!-- Orqa fondagi musiqa -->
     <audio id="bgMusic" src="music.mp3" loop></audio>
 
     <script>
-        // Yurakchalarni yaqqol ko'rinadigan qilib yaratish
         function createHearts() {
             const container = document.getElementById('heartsContainer');
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 25; i++) {
                 let heart = document.createElement('div');
                 heart.classList.add('heart-bg');
                 heart.innerText = '❤';
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 6 + 's';
-                heart.style.animationDuration = Math.random() * 4 + 4 + 's';
-                heart.style.fontSize = Math.random() * 25 + 20 + 'px';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+                heart.style.fontSize = Math.random() * 15 + 18 + 'px';
                 container.appendChild(heart);
             }
         }
         createHearts();
 
-        // Yo'q tugmasining qochish chegarasi (konteyner ichida harakatlanadi)
         function moveNoButton() {
             const noBtn = document.getElementById('noBtn');
-            const x = Math.random() * 260 - 130; 
-            const y = Math.random() * 180 - 90;
+            const x = Math.random() * 200 - 100; 
+            const y = Math.random() * 140 - 70;
             noBtn.style.transform = `translate(${x}px, ${y}px)`;
         }
 
-        // Ha tugmasi bosilganda sahifani yangilash
         function acceptLove() {
             document.getElementById('questionScreen').style.display = 'none';
             document.getElementById('happyScreen').style.display = 'flex';
             
-            // Sahifa elementlar sig'ishi uchun pastga qarab skroll bo'ladigan bo'ladi
-            document.body.style.overflowY = 'auto';
-            document.getElementById('mainBox').style.maxWidth = '550px';
-
-            // Musiqani ijro etish
             const music = document.getElementById('bgMusic');
-            music.play().catch(err => console.log("Musiqa brauzer tomonidan to'sildi:", err));
+            music.play().catch(err => console.log(err));
         }
     </script>
 </body>
