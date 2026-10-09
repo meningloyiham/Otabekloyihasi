@@ -75,37 +75,38 @@
             margin-top: 20px;
         }
 
-        /* Tugmalar dizayni */
+        /* TUGMALAR BLOKI - MUTLAQO TO'G'RILANDI */
         .btn-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
             margin-top: 25px;
             position: relative;
-            height: 60px;
+            min-height: 60px;
+            width: 100%;
         }
         .btn {
-            padding: 12px 35px;
+            padding: 12px 40px;
             font-size: 1.1rem;
             font-weight: bold;
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+            min-width: 110px;
+            text-align: center;
         }
         .btn-yes {
             background-color: #ff007f;
             color: white;
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
-            z-index: 102;
         }
         .btn-no {
             background-color: #e63946;
             color: white;
-            position: absolute;
-            z-index: 101;
             box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
+            position: relative; /* "Ha" tugmasi bilan bir qatorda chiroyli turishi uchun */
         }
 
         /* O'TA YORQIN UChUVChI YURAKChALAR (Qora fon ustidan o'tadi) */
@@ -153,8 +154,9 @@
         </div>
 
         <div class="btn-container">
+            <!-- Endi ikkala tugma ham ekranda yonma-yon aniq ko'rinadi -->
             <button class="btn btn-yes" onclick="showSecretPage()">Ha</button>
-            <button class="btn btn-no" id="nobtn" onmouseover="escapeButton()" onclick="escapeButton()">Yo'q</button>
+            <button class="btn btn-no" id="nobtn" onmouseover="escapeButton()" ontouchstart="escapeButton()" onclick="escapeButton()">Yo'q</button>
         </div>
     </div>
 
@@ -204,10 +206,12 @@
         // "Yo'q" tugmasini qochiradigan funksiya
         function escapeButton() {
             const btn = document.getElementById('nobtn');
-            const x = Math.random() * (window.innerWidth - 120);
+            // Tugma qochganda mutlaq koordinataga o'tishi shart
+            btn.style.position = 'fixed'; 
+            
+            const x = Math.random() * (window.innerWidth - 130);
             const y = Math.random() * (window.innerHeight - 60);
             
-            btn.style.position = 'fixed';
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
         }
