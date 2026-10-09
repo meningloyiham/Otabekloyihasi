@@ -3,216 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohlaroyim uchun maxsus</title>
+    <title>Mohlaroyim uchun</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
         body {
-            background-color: #0b0205;
-            background-image: radial-gradient(circle at center, #1a050f 0%, #050103 100%);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #ffffff;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 10px;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
             overflow-x: hidden;
-            position: relative;
         }
-        /* Fondagi mayda yurakchalar */
-        .bg-heart {
-            position: absolute;
-            color: rgba(255, 20, 147, 0.2);
-            font-size: 20px;
-            pointer-events: none;
-            animation: floatHearts 5s infinite ease-in-out;
-        }
-        .h1 { top: 12%; left: 15%; animation-delay: 0s; }
-        .h2 { top: 25%; right: 10%; animation-delay: 1.5s; }
-        .h3 { bottom: 18%; left: 12%; animation-delay: 2.5s; }
-        .h4 { bottom: 22%; right: 15%; animation-delay: 4s; }
-
         .container {
-            width: 100%;
-            max-width: 400px;
-            background: rgba(15, 4, 9, 0.95);
-            border: 2px solid #ff1493;
+            border: 2px solid #ff007f;
             border-radius: 20px;
-            padding: 15px;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
-            text-align: center;
-            z-index: 2;
-        }
-        
-        .proposal-title {
-            font-size: 16px;
-            color: #ff1493;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        /* Yuqori rasm bloki */
-        .photo-card {
-            display: none;
-            border: 1.5px solid #ff1493;
-            border-radius: 15px;
-            padding: 10px;
-            background: rgba(255, 20, 147, 0.05);
-            margin-bottom: 15px;
-        }
-        .photo-card h2 {
-            font-size: 14px;
-            color: #ff1493;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .photo-box {
+            padding: 25px;
+            max-width: 450px;
             width: 100%;
-            height: 250px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+            background-color: #050505;
+            position: relative;
+            z-index: 10;
+        }
+        .header {
+            color: #ff007f;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            margin-bottom: 25px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
             border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 20, 147, 0.3);
         }
-        .photo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Matn bloki */
-        .card-text {
-            background: rgba(255, 20, 147, 0.04);
-            border-left: 3px solid #ff1493;
-            border-radius: 4px 12px 12px 4px;
-            padding: 12px 15px;
+        .text-content {
+            font-size: 1rem;
+            line-height: 1.6;
             text-align: left;
-            line-height: 1.45;
-            font-size: 13px;
-            color: #f0e6eb;
+            margin-bottom: 20px;
         }
-        .card-text p {
-            margin-bottom: 8px;
+        .text-content p {
+            margin-bottom: 15px;
         }
-        .card-text p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .secret-text {
-            display: none;
-        }
-        
-        .highlight {
-            color: #ff4500;
+        .footer-text {
+            color: #ff007f;
+            font-size: 1.2rem;
             font-weight: bold;
+            margin-top: 20px;
         }
-        .bold-text {
-            font-weight: bold;
-            color: #ffffff;
+        /* Orqa fondagi uchib yuruvchi yurakchalar */
+        .heart {
+            position: fixed;
+            font-size: 24px;
+            color: #ff007f;
+            user-select: none;
+            pointer-events: none;
+            animation: floatUp 4s linear infinite;
+            opacity: 0.8;
+            z-index: 1;
         }
-        .final-love {
-            text-align: center;
-            font-size: 13.5px;
-            font-weight: bold;
-            color: #ff1493;
-            margin-top: 6px;
-        }
-        
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        button {
-            padding: 8px 30px;
-            font-size: 14px;
-            font-weight: 600;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .btn-yes {
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
-            color: white;
-            box-shadow: 0 3px 10px rgba(255, 20, 147, 0.3);
-        }
-        .btn-yes:hover {
-            transform: scale(1.03);
-        }
-        .btn-no {
-            background-color: #e63946;
-            color: white;
-        }
-
-        @keyframes floatHearts {
-            0% { transform: translateY(0); opacity: 0.2; }
-            50% { transform: translateY(-10px); opacity: 0.5; }
-            100% { transform: translateY(0); opacity: 0.2; }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.3) rotate(360deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-heart h1">❤️</div>
-    <div class="bg-heart h2">💖</div>
-    <div class="bg-heart h3">❤️</div>
-    <div class="bg-heart h4">💕</div>
+    <!-- Musiqa kodi -->
+    <audio id="bg-music" loop autoplay hidden>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container">
-        
-        <div id="mainTitle" class="proposal-title">Siz uchun maxsus tabrik! ✨</div>
-        
-        <!-- Yuqori qism (Rasm) -->
-        <div id="photoCard" class="photo-card">
-            <h2>❤️ Rozi bo'lishingizni bilardim! ❤️</h2>
-            <div class="photo-box">
-                <img src="rasm.jpg" alt="Mohlaroyim"> 
-            </div>
+        <div class="header">
+            ❤️ Rozi bo'lishingizni bilardim! ❤️
         </div>
         
-        <!-- Matnlar joyi -->
-        <div class="card-text">
-            <!-- 1-BOSHILGANDAGI OYNA -->
-            <div id="firstPage">
-                <p>Assalomu alaykum, mening qadrli, sadoqatli, latofatli va bebahoyim <span class="bold-text">Mohlaroyim</span>!</p>
-                <p>Sizni bugungi shukrona kuningiz bilan chin qalbimdan muborakbod etaman. Bu dunyodagi eng go'zal tilaklar faqat Siz uchundir.</p>
-                <p class="highlight" style="text-align: center; margin: 10px 0;">Siz men bilan baxtli hayot yo'lini birga bosib o'tishga, butun umrga birga bo'lishga va menga turmushga chiqishga rozimisiz...? 💍❤️</p>
-            </div>
-
-            <!-- "HA" BOSILGANDAN KEYINGI UZUN MATN -->
-            <div id="secondPage" class="secret-text">
-                <p>Siz mening hayotimga kirib kelganingizdan beri dunyoyim tamoman o'zgardi, borlig'im cheksiz baxtga to'ldi.</p>
-                <p>Sizni umrining oxirigacha sevadigan insoningiz bor! Hamisha oilangiz va mening baxtimga sog' bo'ling, ko'zlaringizdan faqat quvonch yoshlari oqsin. Qalbim quyoshi ham, hayotim mazmuni ham yolg'iz Sizsiz, Mohlaroyim.</p>
-                <p>O'qishlaringizda muvaffaqiyat qozonib, shifokor bo'lib yetishing. Germaniyaga birgalikda boraylik! Noyabrdagi uchrashuvni intizorlik bilan kutaman.</p>
-                <p class="final-love">Sizni judayam yaxshi ko'raman! 💖✨</p>
-            </div>
+        <div class="image-container">
+            <!-- Rasm kodi -->
+            <img src="photo.jpg" alt="Mohlaroyim">
         </div>
 
-        <!-- Tugmalar -->
-        <div id="btnContainer" class="btn-container">
-            <button class="btn-yes" onclick="acceptProposal()">Ha</button>
-            <button class="btn-no" onclick="alert('Baribir o\'zimniki bo\'lasiz! 😜')">Yo'q</button>
+        <div class="text-content">
+            <p>Siz mening hayotimga kirib kelganingizdan beri dunyoyim tamoman o'zgardi, borlig'im cheksiz baxtga to'ldi.</p>
+            
+            <p>Sizni umrining oxirigacha sevadigan insoningiz bor! Hamisha oilangiz va mening baxtimga sog' bo'ling, ko'zlaringizdan faqat quvonch yoshlari oqsin. Qalbim quyoshi ham, hayotim mazmuni ham yolg'iz Sizsiz, Mohlaroyim.</p>
+            
+            <p>O'qishlaringizda muvaffaqiyat qozonib, shifokor bo'lib yetishing. Germaniyaga birgalikda boraylik! Noyabrdagi uchrashuvni intizorlik bilan kutaman.</p>
+        </div>
+
+        <div class="footer-text">
+            Sizni judayam yaxshi ko'raman! ❤️✨
         </div>
     </div>
 
     <script>
-        function acceptProposal() {
-            // Birinchi sahifadagi qisqa matn va sarlavhani yashirish
-            document.getElementById("firstPage").style.display = "none";
-            document.getElementById("mainTitle").style.display = "none";
+        // Yurakchalar yaratish effekti
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's'; 
+            document.body.appendChild(heart);
             
-            // "Ha" bosilganda rasm va yangi uzun matnni ochish
-            document.getElementById("photoCard").style.display = "block";
-            document.getElementById("secondPage").style.display = "block";
-            
-            // Tugmalarni yashirish
-            document.getElementById("btnContainer").style.display = "none";
+            setTimeout(() => {
+                heart.remove();
+            }, 4500);
         }
+        
+        setInterval(createHeart, 300);
+
+        // Brauzerda musiqani faollashtirish (ekranga bir marta bosilganda chaladi)
+        window.addEventListener('click', () => {
+            const audio = document.getElementById('bg-music');
+            if (audio) {
+                audio.play().catch(err => console.log("Musiqa chalishda xatolik:", err));
+            }
+        });
     </script>
 </body>
 </html>
