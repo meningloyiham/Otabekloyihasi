@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tug'ilgan kuningiz bilan, Maftuna!</title>
+    <title>Maftunam uchun maxsus ✨</title>
     <style>
         * {
             margin: 0;
@@ -17,147 +17,216 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
             text-align: center;
         }
 
+        /* Umumiy karta uslubi */
         .card {
-            background: rgba(255, 255, 255, 0.88);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 35px 25px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
             backdrop-filter: blur(10px);
             border: 2px solid #ff4d6d;
             z-index: 10;
             max-width: 90%;
-            width: 480px;
-            animation: popIn 1s ease-out;
+            width: 420px;
+            transition: all 0.5s ease;
         }
 
-        h1 {
+        /* Savol oynasi uslublari */
+        h2 {
+            color: #590d22;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-yes {
+            background-color: #ff4d6d;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            background-color: #ff758f;
+        }
+
+        .btn-no {
+            background-color: #f0f0f0;
+            color: #555;
+            position: relative;
+        }
+
+        /* Tabrik oynasi (boshida ko'rinmaydi) */
+        .hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .show-content {
+            display: block !important;
+            animation: popIn 0.8s forwards ease-out;
+        }
+
+        /* Chiroyli rangli tabrik matnlari */
+        .main-title {
             color: #ff4d6d;
-            font-size: 2.3rem;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .congratulation {
+            background: linear-gradient(45deg, #ff4d6d, #c9184a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.4rem;
+            font-weight: bold;
             margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
 
         .wishes-text {
             color: #590d22;
             font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            text-align: justify;
-            text-justify: inter-word;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            font-style: italic;
         }
 
-        .btn {
-            background-color: #ff4d6d;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            background-color: #ff758f;
+        .love-note {
+            color: #ff4d6d;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 15px;
         }
 
         /* Uchuvchi elementlar uslubi */
         .element {
             position: absolute;
             top: -50px;
-            font-size: 24px;
+            font-size: 26px;
             pointer-events: none;
             animation: fall linear infinite;
         }
 
         @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(105vh) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
         }
 
         @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Tabrik kartasi -->
-    <div class="card">
-        <h1>Maftunam... ✨</h1>
-        <div class="wishes-text">
-            Bugun siz tug'ilgan kun, dunyoga beguborlik, go'zallik va iliqlik in'om etilgan kun. 
-            Ba'zida hayotning shoshqin oqimida sizning borligingiz, qalbingizning naqadar toza va qadrli ekanini aytishga ulgurmasligimiz mumkin. 
-            Lekin bilingki, siz bu dunyoda shunchaki yashamayapsiz — siz o'z mehringiz, samimiy kulgingiz va borligingiz bilan atrofingizdagi insonlar hayotini yorityapsiz.<br><br>
-            
-            Sizga qalbi yig'lab turib ham boshqalarga jilmayish hadya eta oladigan kuchli yurak tilayman. 
-            Ko'zlaringizdan oqadigan har bir tomchi yosh faqat va faqat cheksiz baxtdan, hayajondan bo'lsin. 
-            Alloh sizni hamisha o'z panohida asrasin, qalbingizdagi hech kimga aytolmagan eng maxfiy, eng go'zal duolaringizni ijobat qilsin. 
-            Yaxshiyamki bu dunyoda borsiz, yaxshiyamki mening hayotimdamsiz. Tug'ilgan kuningiz muborak bo'lsin... ❤️
+    <!-- 1-BOSQICH: Savol oynasi -->
+    <div class="card" id="questionCard">
+        <h2>Maftunam, meni sevasizmi? 🥺❤️</h2>
+        <div class="btn-group">
+            <button class="btn btn-yes" id="yesBtn">Ha 🥰</button>
+            <button class="btn btn-no" id="noBtn">Yo'q 😢</button>
         </div>
-        <button class="btn" id="musicBtn">Musiqani yoqish 🎵</button>
     </div>
 
-    <!-- O'zingiz yuklaydigan song.mp3 fayli ulanishi -->
+    <!-- 2-BOSQICH: Shirin va chiroyli tabrik oynasi (Yashirin turadi) -->
+    <div class="card hidden" id="wishesCard">
+        <h1 class="main-title">Maftunam! ✨</h1>
+        <p class="congratulation">Jonim, tug'ilgan kuningiz muborak bo'lsin! 🎉🥳</p>
+        <div class="wishes-text">
+            Siz dunyodagi eng begubor, eng go'zal va eng qadrli insonsiz. Borligingiz hayotimni xuddi shu gullar va yuraklardek yorqin va baxtli qilib turadi. <br><br>
+            Alloh sizni hamisha o'z panohida asrasin. Ko'zlaringizdan faqat quvonch va baxt yoshlari oqsin. Qalbingizdagi barcha go'zal niyatlaringizga yetishing!
+        </div>
+        <p class="love-note">Yaxshiyamki borsiz, sizni juda yaxshi ko'raman! ❤️</p>
+    </div>
+
+    <!-- Orqa fondagi song.mp3 musiqasi -->
     <audio id="bgMusic" loop>
         <source src="song.mp3" type="audio/mp3">
-        Sizning brauzeringiz musiqani qo'llab-quvvatlamaydi.
     </audio>
 
     <script>
-        // Musiqa ijrosini boshqarish
+        const questionCard = document.getElementById('questionCard');
+        const wishesCard = document.getElementById('wishesCard');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
         const music = document.getElementById('bgMusic');
-        const btn = document.getElementById('musicBtn');
 
-        btn.addEventListener('click', () => {
-            if (music.paused) {
-                music.play().catch(error => console.log("Musiqa ijro etilmadi:", error));
-                btn.textContent = "Musiqani o'chirish ⏸️";
-            } else {
-                music.pause();
-                btn.textContent = "Musiqani yoqish 🎵";
-            }
+        // "Yo'q" tugmasini bosmoqchi bo'lganda qochib ketadigan qilish (Hazil)
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.clientWidth - 50);
+            const y = Math.random() * (window.innerHeight - noBtn.clientHeight - 50);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        });
+        
+        noBtn.addEventListener('click', () => {
+            alert("Baribir Yo'q deb javob bera olmaysiz 😜");
         });
 
-        // Yurakchalar va gullar uchishi funksiyasi
-        const elements = ['❤️', '💖', '🌸', '🌹', '✨', '💐', '💘'];
+        // "Ha" tugmasi bosilganda hamma sehr boshlanadi
+        yesBtn.addEventListener('click', () => {
+            // Savol oynasini yopish va Tabrik oynasini ochish
+            questionCard.style.display = 'none';
+            wishesCard.classList.remove('hidden');
+            wishesCard.classList.add('show-content');
+
+            // Musiqa ijro etish
+            music.play().catch(error => console.log("Musiqa ijro etilmadi:", error));
+
+            // Elementlar (yurak va gullar) uchishini boshlash
+            setInterval(createElement, 250);
+        });
+
+        // Yurakchalar va gullar yaratish
+        const elements = ['❤️', '💖', '🌸', '🌹', '✨', '💐', '💘', '🌷'];
 
         function createElement() {
             const el = document.createElement('div');
             el.classList.add('element');
             
-            // Tasodifiy yurak yoki gul tanlash
             el.textContent = elements[Math.floor(Math.random() * elements.length)];
             
-            // Tasodifiy joylashuv va tezlik
             el.style.left = Math.random() * 100 + 'vw';
-            el.style.animationDuration = Math.random() * 3 + 2 + 's'; // 2-5 soniya oralig'ida tushadi
-            el.style.fontSize = Math.random() * 20 + 15 + 'px'; // 15px - 35px gacha hajm
+            el.style.animationDuration = Math.random() * 3 + 2 + 's'; 
+            el.style.fontSize = Math.random() * 20 + 18 + 'px'; 
             
             document.body.appendChild(el);
 
-            // Ekrandan chiqib ketgach o'chirib tashlash
             setTimeout(() => {
                 el.remove();
             }, 5000);
         }
-
-        // Har 300 millisekundda yangi element yaratish
-        setInterval(createElement, 300);
     </script>
 </body>
 </html>
