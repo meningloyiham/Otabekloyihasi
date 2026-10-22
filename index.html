@@ -12,7 +12,7 @@
         }
 
         body {
-            background-color: #000000; /* Mutloq qora fon */
+            background-color: #000000; /* Qora fon */
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,43 +23,50 @@
             position: relative;
         }
 
-        /* Oynaning umumiy ixcham dizayni */
+        /* Umumiy ixcham karta dizayni */
         .card {
-            background: rgba(15, 10, 12, 0.92); /* To'q va shaffof karta */
+            background: rgba(15, 10, 12, 0.95);
             padding: 25px 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 25px rgba(255, 77, 109, 0.35);
+            border-radius: 24px;
+            box-shadow: 0 0 30px rgba(255, 77, 109, 0.4);
             backdrop-filter: blur(15px);
             border: 2px solid #ff4d6d;
             z-index: 10;
             max-width: 90%;
-            width: 400px;
+            width: 420px;
             max-height: 95vh;
-            overflow: hidden; /* Skroll bo'lmasligi uchun cheklov */
+            overflow: hidden; /* Skroll butunlay o'chirildi */
             transition: all 0.5s ease;
         }
 
-        /* Savol oynasi sarlavhasi */
-        h2 {
+        /* Matn uslublari */
+        .intro-text {
             color: #fff0f3;
-            font-size: 1.6rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
             margin-bottom: 20px;
-            line-height: 1.4;
+            text-align: justify;
+        }
+
+        h2 {
+            color: #ff758f;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
             text-shadow: 0 2px 10px rgba(255, 77, 109, 0.4);
         }
 
         .btn-group {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             position: relative;
         }
 
         .btn {
-            padding: 10px 30px;
-            font-size: 1.1rem;
+            padding: 12px 35px;
+            font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 25px;
+            border-radius: 30px;
             cursor: pointer;
             border: none;
             transition: all 0.2s ease;
@@ -82,11 +89,9 @@
             position: relative;
         }
 
-        /* Yashirin bloklarni boshqarish */
+        /* Yashirin bloklar */
         .hidden {
-            display: none;
-            opacity: 0;
-            transform: scale(0.8);
+            display: none !important;
         }
 
         .show-content {
@@ -94,29 +99,26 @@
             animation: popIn 0.8s forwards ease-out;
         }
 
-        /* Rang-barang tabrik matnlari */
         .main-title {
             color: #ff4d6d;
-            font-size: 1.9rem;
-            margin-bottom: 8px;
+            font-size: 2.1rem;
+            margin-bottom: 5px;
             text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
         }
 
         .congratulation {
             color: #ff758f;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            margin-bottom: 12px;
-            text-shadow: 0 0 8px rgba(255, 117, 143, 0.4);
+            margin-bottom: 15px;
         }
 
-        /* Ixchamlashtirilgan va chiroyli joylashtirilgan matn */
         .wishes-text {
             color: #fff0f3;
-            font-size: 0.95rem; /* Harflar kichraytirildi */
-            line-height: 1.6;  /* Qatorlar zichligi moslandi */
-            margin-bottom: 12px;
-            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            text-align: justify;
         }
 
         .wishes-text span.highlight {
@@ -127,12 +129,12 @@
         .love-note {
             color: #ff4d6d;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-top: 10px;
             text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
         }
 
-        /* Orqa fonda yorqin neon bo'lib uchadigan yurak va gullar */
+        /* Orqa fondagi yorqin neon elementlar */
         .element {
             position: absolute;
             top: -50px;
@@ -149,14 +151,20 @@
         }
 
         @keyframes popIn {
-            to { opacity: 1; transform: scale(1); }
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1-BOSQICH: Savol oynasi -->
+    <!-- 1-BOSQICH: Savol oynasi (Matnning bosh qismi bilan) -->
     <div class="card" id="questionCard">
+        <div class="intro-text">
+            Bugun siz tug'ilgan kun, dunyoga beguborlik, go'zallik va iliqlik in'om etilgan kun. 
+            Ba'zida hayotning shoshqin oqimida sizning borligingiz, qalbingizning naqadar toza va qadrli ekanini aytishga ulgurmasligimiz mumkin. 
+            Lekin bilingki, siz bu dunyoda shunchaki yashamayapsiz...
+        </div>
         <h2>Maftunam, meni sevasizmi? 🥺❤️</h2>
         <div class="btn-group">
             <button class="btn btn-yes" id="yesBtn">Ha 🥰</button>
@@ -164,15 +172,15 @@
         </div>
     </div>
 
-    <!-- 2-BOSQICH: Skroll bo'lmaydigan, ixcham va ta'sirli tabrik oynasi -->
+    <!-- 2-BOSQICH: "Ha" bosilgandan keyin ochiladigan ta'sirli davomi -->
     <div class="card hidden" id="wishesCard">
         <h1 class="main-title">Maftunam... ✨</h1>
-        <p class="congratulation">Jonim, tug'ilgan kuningiz muborak bo'lsin! 🎉</p>
+        <p class="congratulation">Jonim, tug'ilgan kuningiz muborak bo'lsin! 🎉🥳</p>
         <div class="wishes-text">
-            Bugun siz dunyoga kelib, hayotimizga go'zallik va iliqlik in'om etilgan kun. 
-            Siz o'z mehringiz va samimiy kulgingiz bilan borligingizni his qildirib, hayotimni yorityapsiz.<br><br>
-            Sizga kuchli yurak va hamisha jilmayib turadigan ko'zlar tilayman. Ko'zlaringizdan oqadigan yosh faqat va faqat <span class="highlight">cheksiz baxtdan bo'lsin</span>. 
-            Alloh sizni asrasin va barcha maxfiy duolaringizni ijobat qilsin.
+            Siz o'z mehringiz, samimiy kulgingiz va borligingiz bilan hayotimni yorityapsiz.<br><br>
+            Sizga qalbi yig'lab turib ham boshqalarga jilmayish hadya eta oladigan kuchli yurak tilayman. 
+            Ko'zlaringizdan oqadigan har bir tomchi yosh faqat va faqat <span class="highlight">cheksiz baxtdan, hayajondan bo'lsin</span>. <br><br>
+            Alloh sizni hamisha o'z panohida asrasin, qalbingizdagi eng maxfiy, eng go'zal duolaringizni ijobat qilsin.
         </div>
         <p class="love-note">Yaxshiyamki borsiz, sizni juda yaxshi ko'raman... ❤️</p>
     </div>
@@ -204,7 +212,7 @@
 
         // "Ha" bosilganda hamma narsa faollashadi
         yesBtn.addEventListener('click', () => {
-            questionCard.style.display = 'none';
+            questionCard.classList.add('hidden');
             wishesCard.classList.remove('hidden');
             wishesCard.classList.add('show-content');
 
@@ -212,7 +220,7 @@
             music.play().catch(error => console.log("Musiqa chalinmadi, faylni tekshiring:", error));
 
             // Yurakchalar va gullar parvozi
-            setInterval(createElement, 200);
+            setInterval(createElement, 180);
         });
 
         // Neon effektli elementlar ro'yxati
@@ -226,7 +234,7 @@
             
             el.style.left = Math.random() * 100 + 'vw';
             el.style.animationDuration = Math.random() * 3 + 2.5 + 's'; 
-            el.style.fontSize = Math.random() * 15 + 18 + 'px'; 
+            el.style.fontSize = Math.random() * 18 + 18 + 'px'; 
             
             document.body.appendChild(el);
 
