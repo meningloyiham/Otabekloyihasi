@@ -3,229 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siz uchun maxsus tabrik!</title>
+    <title>Tug'ilgan kuningiz bilan, Maftuna!</title>
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
             box-sizing: border-box;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        /* Qora kontyener */
-        .container {
-            border: 2px solid #ff007f;
-            border-radius: 20px;
-            padding: 25px;
-            max-width: 450px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
-            background-color: rgba(5, 5, 5, 0.95);
-            position: relative;
-            z-index: 100;
         }
 
-        .hidden {
-            display: none !important;
-        }
-
-        .header {
-            color: #ff007f;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        /* Qizil chiziqli iqtibos (quote) uslubi */
-        .quote-box {
-            border-left: 3px solid #ff007f;
-            padding-left: 15px;
-            text-align: left;
-            margin-bottom: 25px;
-        }
-
-        .image-container {
-            margin-bottom: 25px;
-        }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .text-content {
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-        .text-content p {
-            margin-bottom: 20px;
-        }
-        .footer-text {
-            color: #ff007f;
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        /* TUGMALAR BLOKI - MUTLAQO TO'G'RILANDI */
-        .btn-container {
+        body {
+            background: linear-gradient(135deg, #ffe5ec, #ffb3c6);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 25px;
-            margin-top: 25px;
-            position: relative;
-            min-height: 60px;
-            width: 100%;
-        }
-        .btn {
-            padding: 12px 40px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: transform 0.1s ease, background-color 0.2s ease;
-            min-width: 110px;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
             text-align: center;
         }
-        .btn-yes {
-            background-color: #ff007f;
-            color: white;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
-        }
-        .btn-no {
-            background-color: #e63946;
-            color: white;
-            box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
-            position: relative; /* "Ha" tugmasi bilan bir qatorda chiroyli turishi uchun */
+
+        .card {
+            background: rgba(255, 255, 255, 0.88);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid #ff4d6d;
+            z-index: 10;
+            max-width: 90%;
+            width: 480px;
+            animation: popIn 1s ease-out;
         }
 
-        /* O'TA YORQIN UChUVChI YURAKChALAR (Qora fon ustidan o'tadi) */
-        .heart {
-            position: fixed;
-            font-size: 26px;
-            user-select: none;
+        h1 {
+            color: #ff4d6d;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .wishes-text {
+            color: #590d22;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #ff758f;
+        }
+
+        /* Uchuvchi elementlar uslubi */
+        .element {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
             pointer-events: none;
-            animation: floatUp 4.5s linear infinite;
-            z-index: 9999;
-            filter: drop-shadow(0 0 8px #ff007f) drop-shadow(0 0 15px #ff007f);
+            animation: fall linear infinite;
         }
 
-        @keyframes floatUp {
+        @keyframes fall {
             0% {
-                transform: translateY(105vh) scale(0) rotate(0deg);
-                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
             }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
             100% {
-                transform: translateY(-10vh) scale(1.4) rotate(360deg);
+                transform: translateY(105vh) rotate(360deg);
                 opacity: 0;
             }
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Musiqa fayli -->
-    <audio id="bg-music" loop hidden>
-        <source src="music.mp3" type="audio/mpeg">
+    <!-- Tabrik kartasi -->
+    <div class="card">
+        <h1>Maftunam... ✨</h1>
+        <div class="wishes-text">
+            Bugun siz tug'ilgan kun, dunyoga beguborlik, go'zallik va iliqlik in'om etilgan kun. 
+            Ba'zida hayotning shoshqin oqimida sizning borligingiz, qalbingizning naqadar toza va qadrli ekanini aytishga ulgurmasligimiz mumkin. 
+            Lekin bilingki, siz bu dunyoda shunchaki yashamayapsiz — siz o'z mehringiz, samimiy kulgingiz va borligingiz bilan atrofingizdagi insonlar hayotini yorityapsiz.<br><br>
+            
+            Sizga qalbi yig'lab turib ham boshqalarga jilmayish hadya eta oladigan kuchli yurak tilayman. 
+            Ko'zlaringizdan oqadigan har bir tomchi yosh faqat va faqat cheksiz baxtdan, hayajondan bo'lsin. 
+            Alloh sizni hamisha o'z panohida asrasin, qalbingizdagi hech kimga aytolmagan eng maxfiy, eng go'zal duolaringizni ijobat qilsin. 
+            Yaxshiyamki bu dunyoda borsiz, yaxshiyamki mening hayotimdamsiz. Tug'ilgan kuningiz muborak bo'lsin... ❤️
+        </div>
+        <button class="btn" id="musicBtn">Musiqani yoqish 🎵</button>
+    </div>
+
+    <!-- O'zingiz yuklaydigan song.mp3 fayli ulanishi -->
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mp3">
+        Sizning brauzeringiz musiqani qo'llab-quvvatlamaydi.
     </audio>
 
-    <!-- 1-BOSQICh: BIRINChI TABRIK OYNASI -->
-    <div class="container" id="greeting-box">
-        <div class="header">Siz uchun maxsus tabrik! ✨🌹</div>
-        
-        <div class="quote-box">
-            <div class="text-content">
-                <p>Assalomu alaykum, bugungi tavallud ayyomingiz muborak bo'lsin!</p>
-                <p>Mening qadrli, sadoqatli, latofatli va go'zalim Mohlaroyim! Sizni bugungi shukrona kuningiz bilan chin qalbimdan tabriklayman. Dunyodagi eng go'zal tilaklar siz uchun.</p>
-                <p>Siz men bilan baxtli hayot yo'lini bosib o'tishga, butun umrga birga bo'lishga va menga turmushga chiqishga rozimisiz...?? 💍❤️</p>
-            </div>
-        </div>
-
-        <div class="btn-container">
-            <!-- Endi ikkala tugma ham ekranda yonma-yon aniq ko'rinadi -->
-            <button class="btn btn-yes" onclick="showSecretPage()">Ha</button>
-            <button class="btn btn-no" id="nobtn" onmouseover="escapeButton()" ontouchstart="escapeButton()" onclick="escapeButton()">Yo'q</button>
-        </div>
-    </div>
-
-    <!-- 2-BOSQICh: ASOSIY MATN -->
-    <div class="container hidden" id="main-box">
-        <div class="header">
-            ❤️ Rozi bo'lishingizni bilardim! ❤️
-        </div>
-        
-        <div class="image-container">
-            <img src="photo.jpg" alt="Mohlaroyim">
-        </div>
-
-        <div class="text-content" style="text-align: left;">
-            <p>Siz mening hayotimga kirib kelganingizdan beri dunyoyim tamoman o'zgardi, borlig'im cheksiz baxtga to'ldi.</p>
-            
-            <p>Sizni umrining oxirigacha sevadigan insoningiz bor! Hamisha oilangiz va mening baxtimga sog' bo'ling, ko'zlaringizdan faqat quvonch yoshlari oqsin. Qalbim quyoshi ham, hayotim mazmuni ham yolg'iz Sizsiz, Mohlaroyim.</p>
-            
-            <p>O'qishlaringizda muvaffaqiyat qozonib, shifokor bo'lib yetishing. Germaniyaga birgalikda boraylik! Noyabrdagi uchrashuvni intizorlik bilan kutaman.</p>
-        </div>
-
-        <div class="footer-text">
-            Sizni judayam yaxshi ko'raman! ❤️✨
-        </div>
-    </div>
-
     <script>
-        // Yurakchalar yomg'iri effekti
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            
-            const heartTypes = ['❤️', '💖', '🌹', '💕'];
-            heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
-            
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3.5 + 's'; 
-            document.body.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 4500);
-        }
-        
-        setInterval(createHeart, 250);
+        // Musiqa ijrosini boshqarish
+        const music = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
 
-        // "Yo'q" tugmasini qochiradigan funksiya
-        function escapeButton() {
-            const btn = document.getElementById('nobtn');
-            // Tugma qochganda mutlaq koordinataga o'tishi shart
-            btn.style.position = 'fixed'; 
-            
-            const x = Math.random() * (window.innerWidth - 130);
-            const y = Math.random() * (window.innerHeight - 60);
-            
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
-        }
-
-        // "Ha" bosilganda sahifani almashtirish va musiqa qo'yish
-        function showSecretPage() {
-            document.getElementById('greeting-box').classList.add('hidden');
-            document.getElementById('main-box').classList.remove('hidden');
-            
-            const audio = document.getElementById('bg-music');
-            if (audio) {
-                audio.play().catch(err => console.log("Musiqa ijro etilmadi:", err));
+        btn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play().catch(error => console.log("Musiqa ijro etilmadi:", error));
+                btn.textContent = "Musiqani o'chirish ⏸️";
+            } else {
+                music.pause();
+                btn.textContent = "Musiqani yoqish 🎵";
             }
+        });
+
+        // Yurakchalar va gullar uchishi funksiyasi
+        const elements = ['❤️', '💖', '🌸', '🌹', '✨', '💐', '💘'];
+
+        function createElement() {
+            const el = document.createElement('div');
+            el.classList.add('element');
+            
+            // Tasodifiy yurak yoki gul tanlash
+            el.textContent = elements[Math.floor(Math.random() * elements.length)];
+            
+            // Tasodifiy joylashuv va tezlik
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = Math.random() * 3 + 2 + 's'; // 2-5 soniya oralig'ida tushadi
+            el.style.fontSize = Math.random() * 20 + 15 + 'px'; // 15px - 35px gacha hajm
+            
+            document.body.appendChild(el);
+
+            // Ekrandan chiqib ketgach o'chirib tashlash
+            setTimeout(() => {
+                el.remove();
+            }, 5000);
         }
+
+        // Har 300 millisekundda yangi element yaratish
+        setInterval(createElement, 300);
     </script>
 </body>
 </html>
