@@ -3,244 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maftunam uchun maxsus ✨</title>
+    <title>Siz uchun, Shahlo...</title>
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
         body {
-            background-color: #000000; /* Qora fon */
-            height: 100vh;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffe5ec, #ffb3c6);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
-            text-align: center;
-            position: relative;
+            overflow-x: hidden;
+            perspective: 1000px;
         }
-
-        /* Umumiy ixcham karta dizayni */
-        .card {
-            background: rgba(15, 10, 12, 0.95);
-            padding: 25px 20px;
-            border-radius: 24px;
-            box-shadow: 0 0 30px rgba(255, 77, 109, 0.4);
-            backdrop-filter: blur(15px);
-            border: 2px solid #ff4d6d;
-            z-index: 10;
-            max-width: 90%;
-            width: 420px;
-            max-height: 95vh;
-            overflow: hidden; /* Skroll butunlay o'chirildi */
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(255, 75, 110, 0.2);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            border: 2px solid #ff85a2;
             transition: all 0.5s ease;
         }
-
-        /* Matn uslublari */
-        .intro-text {
-            color: #fff0f3;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        h2 {
-            color: #ff758f;
-            font-size: 1.5rem;
+        h1 {
+            color: #d90429;
+            font-size: 2.2rem;
             margin-bottom: 25px;
-            text-shadow: 0 2px 10px rgba(255, 77, 109, 0.4);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
-
-        .btn-group {
+        .letter {
+            color: #4a4a4a;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            text-align: justify;
+            white-space: pre-line;
+        }
+        .question-box {
+            margin-top: 30px;
+        }
+        .question {
+            font-size: 1.4rem;
+            color: #2b2b2b;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        .buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
+            gap: 40px;
+            height: 60px;
             position: relative;
         }
-
         .btn {
             padding: 12px 35px;
             font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
             border: none;
-            transition: all 0.2s ease;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            outline: none;
         }
-
-        .btn-yes {
-            background-color: #ff4d6d;
+        #yesBtn {
+            background-color: #2a9d8f;
             color: white;
-            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.5);
+            box-shadow: 0 5px 15px rgba(42, 157, 143, 0.4);
         }
-
-        .btn-yes:hover {
+        #yesBtn:hover {
+            background-color: #21867a;
             transform: scale(1.05);
-            background-color: #ff758f;
         }
-
-        .btn-no {
-            background-color: #222;
-            color: #888;
-            position: relative;
-        }
-
-        /* Yashirin bloklar */
-        .hidden {
-            display: none !important;
-        }
-
-        .show-content {
-            display: block !important;
-            animation: popIn 0.8s forwards ease-out;
-        }
-
-        .main-title {
-            color: #ff4d6d;
-            font-size: 2.1rem;
-            margin-bottom: 5px;
-            text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
-        }
-
-        .congratulation {
-            color: #ff758f;
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .wishes-text {
-            color: #fff0f3;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .wishes-text span.highlight {
-            color: #ff758f;
-            font-weight: bold;
-        }
-
-        .love-note {
-            color: #ff4d6d;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 10px;
-            text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
-        }
-
-        /* Orqa fondagi yorqin neon elementlar */
-        .element {
+        #noBtn {
+            background-color: #e63946;
+            color: white;
             position: absolute;
-            top: -50px;
-            font-size: 26px;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+            will-change: transform, left, top;
+        }
+        .heart, .flower {
+            position: absolute;
+            font-size: 24px;
             pointer-events: none;
-            animation: fall linear infinite;
-            z-index: 1;
-            filter: drop-shadow(0 0 12px rgba(255, 77, 109, 0.8));
+            animation: floatUp 4s linear forwards;
+            z-index: 9999;
         }
-
-        @keyframes fall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(1.5);
+                opacity: 0;
+            }
         }
-
-        @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
+        .success-message {
+            display: none;
+            font-size: 1.5rem;
+            color: #d90429;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1-BOSQICH: Savol oynasi (Matnning bosh qismi bilan) -->
-    <div class="card" id="questionCard">
-        <div class="intro-text">
-            Bugun siz tug'ilgan kun, dunyoga beguborlik, go'zallik va iliqlik in'om etilgan kun. 
-            Ba'zida hayotning shoshqin oqimida sizning borligingiz, qalbingizning naqadar toza va qadrli ekanini aytishga ulgurmasligimiz mumkin. 
-            Lekin bilingki, siz bu dunyoda shunchaki yashamayapsiz...
+    <div class="container" id="mainContainer">
+        <h1>Shahlo, qalbimning egasi...</h1>
+        <div class="letter">
+            Siz mening hayotimga kirib kelganingizdan beri dunyo go'zallashdi, borligim ma'noga tuldi. Har soniyada, har nafasda sizning borligingizni his qilish Allohning menga bergan eng buyuk mukofotidir. 
+
+            Ba'zan so'zlar qalbimdagi sizga bo'lgan cheksiz sevgini, hurmatni va sadoqatni ifodalashga ojizlik qiladi. Siz mening ham bugunim, ham ertamsiz. Siz bor bo'lgan hayot men uchun eng baxtli hayotdir. Qalbingizni har bir zarbasi mening yuragimda aks sado beradi. 
+
+            Mening borligim, mening qalbim siz bilan tirik. Sizni judayam, har narsadan ortiq yaxshi ko'raman va butun umr baxtli qilishga va'da beraman...
         </div>
-        <h2>Maftunam, meni sevasizmi? 🥺❤️</h2>
-        <div class="btn-group">
-            <button class="btn btn-yes" id="yesBtn">Ha 🥰</button>
-            <button class="btn btn-no" id="noBtn">Yo'q 😢</button>
+
+        <div class="question-box" id="questionBox">
+            <p class="question">Meni borimcha sevasizmi, men bilan birga bo'lishga rozimisiz?</p>
+            <div class="buttons">
+                <button class="btn" id="yesBtn">HA</button>
+                <button class="btn" id="noBtn">YO'Q</button>
+            </div>
+        </div>
+        <div class="success-message" id="successMsg">
+            Men ham sizni judayam yaxshi ko'raman! 💖 Siz bilan butun umr birga bo'laman! 🌹✨
         </div>
     </div>
 
-    <!-- 2-BOSQICH: "Ha" bosilgandan keyin ochiladigan ta'sirli davomi -->
-    <div class="card hidden" id="wishesCard">
-        <h1 class="main-title">Maftunam... ✨</h1>
-        <p class="congratulation">Jonim, tug'ilgan kuningiz muborak bo'lsin! 🎉🥳</p>
-        <div class="wishes-text">
-            Siz o'z mehringiz, samimiy kulgingiz va borligingiz bilan hayotimni yorityapsiz.<br><br>
-            Sizga qalbi yig'lab turib ham boshqalarga jilmayish hadya eta oladigan kuchli yurak tilayman. 
-            Ko'zlaringizdan oqadigan har bir tomchi yosh faqat va faqat <span class="highlight">cheksiz baxtdan, hayajondan bo'lsin</span>. <br><br>
-            Alloh sizni hamisha o'z panohida asrasin, qalbingizdagi eng maxfiy, eng go'zal duolaringizni ijobat qilsin.
-        </div>
-        <p class="love-note">Yaxshiyamki borsiz, sizni juda yaxshi ko'raman... ❤️</p>
-    </div>
-
-    <!-- Orqa fondagi song.mp3 musiqasi -->
+    <!-- O'zingiz yuklagan music.mp3 fayli shu yerga ulandi -->
     <audio id="bgMusic" loop>
-        <source src="song.mp3" type="audio/mp3">
+        <source src="music.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        const questionCard = document.getElementById('questionCard');
-        const wishesCard = document.getElementById('wishesCard');
-        const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
-        const music = document.getElementById('bgMusic');
+        const yesBtn = document.getElementById('yesBtn');
+        const questionBox = document.getElementById('questionBox');
+        const successMsg = document.getElementById('successMsg');
+        const bgMusic = document.getElementById('bgMusic');
+        const container = document.getElementById('mainContainer');
 
-        // "Yo'q" tugmasining qochib ketish funksiyasi
-        noBtn.addEventListener('mouseover', () => {
-            const x = Math.random() * (window.innerWidth - noBtn.clientWidth - 50);
-            const y = Math.random() * (window.innerHeight - noBtn.clientHeight - 50);
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-        });
-        
-        noBtn.addEventListener('click', () => {
-            alert("Baribir Yo'q deb javob bera olmaysiz 😜");
+        // Yo'q tugmasidan qochish funksiyasi
+        function moveNoButton() {
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            const maxX = containerRect.width - btnRect.width - 20;
+            const maxY = containerRect.height - btnRect.height - 20;
+
+            const randomX = Math.max(10, Math.floor(Math.random() * maxX)) - (containerRect.width / 2) + (btnRect.width / 2);
+            const randomY = Math.max(10, Math.floor(Math.random() * maxY)) - (containerRect.height / 2) + (btnRect.height / 2);
+
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        }
+
+        noBtn.addEventListener('mouseenter', moveNoButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveNoButton();
         });
 
-        // "Ha" bosilganda hamma narsa faollashadi
+        // Ha tugmasi bosilganda
         yesBtn.addEventListener('click', () => {
-            questionCard.classList.add('hidden');
-            wishesCard.classList.remove('hidden');
-            wishesCard.classList.add('show-content');
+            questionBox.style.display = 'none';
+            successMsg.style.display = 'block';
 
-            // Musiqa ijro etiladi
-            music.play().catch(error => console.log("Musiqa chalinmadi, faylni tekshiring:", error));
+            // Musiqani chalinishi
+            bgMusic.play().catch(error => {
+                console.log("Audio ijrosida xatolik: ", error);
+            });
 
-            // Yurakchalar va gullar parvozi
-            setInterval(createElement, 180);
+            setInterval(createHeart, 150);
+            setInterval(createFlower, 250);
         });
 
-        // Neon effektli elementlar ro'yxati
-        const elements = ['❤️', '💖', '🌸', '🌹', '✨', '💐', '💘', '🌷', '💝'];
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
 
-        function createElement() {
-            const el = document.createElement('div');
-            el.classList.add('element');
-            
-            el.textContent = elements[Math.floor(Math.random() * elements.length)];
-            
-            el.style.left = Math.random() * 100 + 'vw';
-            el.style.animationDuration = Math.random() * 3 + 2.5 + 's'; 
-            el.style.fontSize = Math.random() * 18 + 18 + 'px'; 
-            
-            document.body.appendChild(el);
-
-            setTimeout(() => {
-                el.remove();
-            }, 5500);
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            const flowerTypes = ['🌹', '🌸', '💐', '✨'];
+            flower.innerHTML = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(flower);
+            setTimeout(() => flower.remove(), 4000);
         }
     </script>
 </body>
