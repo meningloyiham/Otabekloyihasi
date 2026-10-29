@@ -129,7 +129,7 @@
 
             Ba'zan so'zlar qalbimdagi sizga bo'lgan cheksiz sevgini, hurmatni va sadoqatni ifodalashga ojizlik qiladi. Siz mening ham bugunim, ham ertamsiz. Siz bor bo'lgan hayot men uchun eng baxtli hayotdir. Qalbingizni har bir zarbasi mening yuragimda aks sado beradi. 
 
-            Mening borligim, mening qalbim siz bilan tirik. Sizni judayam, har narsadan ortiq yaxshi ko'raman va butun umr baxtli qilishga va'da beraman...
+            Mening borligim, mening qalbim siz bilan tirik. Sizni judayam, har narsadan ortiq yaxshi ko'raman. Siz mening bu dunyodagi eng go'zal taqdirimsiz, baxtim va butun borligimsiz... ❤️
         </div>
 
         <div class="question-box" id="questionBox">
@@ -144,7 +144,6 @@
         </div>
     </div>
 
-    <!-- O'zingiz yuklagan music.mp3 fayli shu yerga ulandi -->
     <audio id="bgMusic" loop>
         <source src="music.mp3" type="audio/mpeg">
     </audio>
@@ -157,7 +156,6 @@
         const bgMusic = document.getElementById('bgMusic');
         const container = document.getElementById('mainContainer');
 
-        // Yo'q tugmasidan qochish funksiyasi
         function moveNoButton() {
             const containerRect = container.getBoundingClientRect();
             const btnRect = noBtn.getBoundingClientRect();
@@ -178,12 +176,10 @@
             moveNoButton();
         });
 
-        // Ha tugmasi bosilganda
         yesBtn.addEventListener('click', () => {
             questionBox.style.display = 'none';
             successMsg.style.display = 'block';
 
-            // Musiqani chalinishi
             bgMusic.play().catch(error => {
                 console.log("Audio ijrosida xatolik: ", error);
             });
