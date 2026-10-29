@@ -2,7 +2,7 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Siz uchun, Shahlo...</title>
     <style>
         * {
@@ -10,61 +10,96 @@
             margin: 0;
             padding: 0;
         }
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Skrol bo'lmasligi uchun */
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #ffe5ec, #ffb3c6);
-            min-height: 100vh;
+            background: radial-gradient(circle, #1a0007, #000000); /* Yuraklar yaxshi ajralishi uchun to'q fon */
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
-            perspective: 1000px;
+            position: relative;
         }
+
+        /* Ffondagi doimiy aylanuvchi yurakchalar */
+        .bg-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 75, 110, 0.3);
+            font-size: 20px;
+            animation: spin 6s linear infinite;
+            text-shadow: 0 0 10px rgba(255, 75, 110, 0.5);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
+            background: rgba(20, 0, 5, 0.85);
+            padding: 30px 25px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(255, 75, 110, 0.2);
+            box-shadow: 0 0 30px rgba(255, 75, 110, 0.4);
             text-align: center;
-            max-width: 600px;
+            max-width: 480px;
             width: 90%;
-            border: 2px solid #ff85a2;
+            border: 2px solid #ff4b6e;
+            backdrop-filter: blur(10px);
+            z-index: 10;
             transition: all 0.5s ease;
+            max-height: 95vh;
         }
+
         h1 {
-            color: #d90429;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            color: #ff4b6e;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 75, 110, 0.6);
         }
+
         .letter {
-            color: #4a4a4a;
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 35px;
-            text-align: justify;
+            color: #ffe5ec;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: center;
             white-space: pre-line;
         }
+
         .question-box {
-            margin-top: 30px;
+            margin-top: 15px;
         }
+
         .question {
-            font-size: 1.4rem;
-            color: #2b2b2b;
+            font-size: 1.2rem;
+            color: #ffffff;
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
+
         .buttons {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
-            height: 60px;
+            gap: 30px;
+            height: 50px;
             position: relative;
         }
+
         .btn {
-            padding: 12px 35px;
-            font-size: 1.2rem;
+            padding: 10px 30px;
+            font-size: 1.1rem;
             font-weight: bold;
             border: none;
             border-radius: 50px;
@@ -72,32 +107,38 @@
             transition: transform 0.2s, background-color 0.3s;
             outline: none;
         }
+
         #yesBtn {
-            background-color: #2a9d8f;
+            background-color: #ff4b6e;
             color: white;
-            box-shadow: 0 5px 15px rgba(42, 157, 143, 0.4);
+            box-shadow: 0 0 15px rgba(255, 75, 110, 0.6);
         }
+
         #yesBtn:hover {
-            background-color: #21867a;
+            background-color: #e0395c;
             transform: scale(1.05);
         }
+
         #noBtn {
-            background-color: #e63946;
+            background-color: #4a4a4a;
             color: white;
             position: absolute;
-            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
             will-change: transform, left, top;
         }
+
+        /* Ha bosilgandan keyin uchadigan yuraklar va gullar */
         .heart, .flower {
             position: absolute;
-            font-size: 24px;
+            font-size: 28px;
             pointer-events: none;
-            animation: floatUp 4s linear forwards;
+            animation: floatUp 3.5s linear forwards;
             z-index: 9999;
         }
+
         @keyframes floatUp {
             0% {
-                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                transform: translateY(105vh) rotate(0deg) scale(0.5);
                 opacity: 1;
             }
             100% {
@@ -105,42 +146,61 @@
                 opacity: 0;
             }
         }
+
         .success-message {
             display: none;
-            font-size: 1.5rem;
-            color: #d90429;
-            font-weight: bold;
-            margin-top: 20px;
-            animation: pulse 1.5s infinite;
+            font-size: 1.15rem;
+            color: #ffe5ec;
+            line-height: 1.7;
+            text-align: center;
+            white-space: pre-line;
+            animation: fadeIn 1s ease forwards;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
+    <!-- Orqa fondagi har tomonga sochilgan yurakchalar -->
+    <div class="bg-hearts">
+        <div class="bg-heart" style="top: 15%; left: 10%;">💖</div>
+        <div class="bg-heart" style="top: 25%; right: 15%;">✨</div>
+        <div class="bg-heart" style="top: 70%; left: 15%;">💕</div>
+        <div class="bg-heart" style="top: 80%; right: 12%;">💖</div>
+        <div class="bg-heart" style="top: 45%; left: 80%;">🌸</div>
+        <div class="bg-heart" style="top: 55%; left: 8%;">💘</div>
+    </div>
+
     <div class="container" id="mainContainer">
-        <h1>Shahlo, qalbimning egasi...</h1>
-        <div class="letter">
-            Siz mening hayotimga kirib kelganingizdan beri dunyo go'zallashdi, borligim ma'noga tuldi. Har soniyada, har nafasda sizning borligingizni his qilish Allohning menga bergan eng buyuk mukofotidir. 
+        <div id="introStage">
+            <h1>Shahlo, qalbimning egasi...</h1>
+            <div class="letter">
+                Siz mening hayotimga kirib kelganingizdan beri har bir kunim quvonchga to'ldi. Siz bilan o'tgan har bir lahza men uchun eng shirin damlardir. 
 
-            Ba'zan so'zlar qalbimdagi sizga bo'lgan cheksiz sevgini, hurmatni va sadoqatni ifodalashga ojizlik qiladi. Siz mening ham bugunim, ham ertamsiz. Siz bor bo'lgan hayot men uchun eng baxtli hayotdir. Qalbingizni har bir zarbasi mening yuragimda aks sado beradi. 
+                Sizni borligingiz, qalbingizning pokligi meni har soniyada o'ziga maftun etadi. Siz mening bu dunyodagi eng go'zal taqdirimsiz, baxtim va butun borligimsiz... ❤️
+            </div>
 
-            Mening borligim, mening qalbim siz bilan tirik. Sizni judayam, har narsadan ortiq yaxshi ko'raman. Siz mening bu dunyodagi eng go'zal taqdirimsiz, baxtim va butun borligimsiz... ❤️
-        </div>
-
-        <div class="question-box" id="questionBox">
-            <p class="question">Meni borimcha sevasizmi, men bilan birga bo'lishga rozimisiz?</p>
-            <div class="buttons">
-                <button class="btn" id="yesBtn">HA</button>
-                <button class="btn" id="noBtn">YO'Q</button>
+            <div class="question-box" id="questionBox">
+                <p class="question">Meni borimcha sevasizmi, men bilan birga bo'lishga rozimisiz?</p>
+                <div class="buttons">
+                    <button class="btn" id="yesBtn">HA</button>
+                    <button class="btn" id="noBtn">YO'Q</button>
+                </div>
             </div>
         </div>
+
+        <!-- HA bosilgandan keyin chiqadigan eng go'zal va yig'latadigan tilaklar -->
         <div class="success-message" id="successMsg">
-            Men ham sizni judayam yaxshi ko'raman! 💖 Siz bilan butun umr birga bo'laman! 🌹✨
+            <h1 style="font-size: 2rem; margin-bottom: 15px;">Rahmat, baxtim... 😭💖</h1>
+            Yuragimning har bir urishi endi faqat siz uchun! Siz mening yig'lagan ko'zlarimdagi quvonch yoshimsiz. 
+            
+            Siz bor bo'lgan dunyoda yashash, sizni har nafasda his qilish Allohning menga bergan eng go'zal mo'jizasidir. Sizni butun umr e'zozlashga, har qanday vaziyatda qo'lingizdan mahkam tutib, faqat va faqat baxtdan yig'latishga so'z beraman!
+
+            Men sizni cheksiz sevgim bilan o'rab olaman, mening yagona, takrorlanmas Shahlocham! 🌹✨
         </div>
     </div>
 
@@ -151,11 +211,12 @@
     <script>
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
-        const questionBox = document.getElementById('questionBox');
+        const introStage = document.getElementById('introStage');
         const successMsg = document.getElementById('successMsg');
         const bgMusic = document.getElementById('bgMusic');
         const container = document.getElementById('mainContainer');
 
+        // Yo'q tugmasidan qochish
         function moveNoButton() {
             const containerRect = container.getBoundingClientRect();
             const btnRect = noBtn.getBoundingClientRect();
@@ -176,16 +237,19 @@
             moveNoButton();
         });
 
+        // Ha tugmasi bosilganda faza o'zgarishi
         yesBtn.addEventListener('click', () => {
-            questionBox.style.display = 'none';
+            introStage.style.display = 'none';
             successMsg.style.display = 'block';
 
+            // Musiqa ijrosi
             bgMusic.play().catch(error => {
-                console.log("Audio ijrosida xatolik: ", error);
+                console.log("Audio xatolik: ", error);
             });
 
-            setInterval(createHeart, 150);
-            setInterval(createFlower, 250);
+            // Vizual effektlar
+            setInterval(createHeart, 120);
+            setInterval(createFlower, 200);
         });
 
         function createHeart() {
@@ -193,20 +257,20 @@
             heart.classList.add('heart');
             heart.innerHTML = '💖';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            heart.style.animationDuration = Math.random() * 1.5 + 2.5 + 's';
             document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 4000);
+            setTimeout(() => heart.remove(), 3500);
         }
 
         function createFlower() {
             const flower = document.createElement('div');
             flower.classList.add('flower');
-            const flowerTypes = ['🌹', '🌸', '💐', '✨'];
+            const flowerTypes = ['🌹', '🌸', '💐', '✨', '💕'];
             flower.innerHTML = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
             flower.style.left = Math.random() * 100 + 'vw';
-            flower.style.animationDuration = Math.random() * 2 + 3 + 's';
+            flower.style.animationDuration = Math.random() * 1.5 + 2.5 + 's';
             document.body.appendChild(flower);
-            setTimeout(() => flower.remove(), 4000);
+            setTimeout(() => flower.remove(), 3500);
         }
     </script>
 </body>
